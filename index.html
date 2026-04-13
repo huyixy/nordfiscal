@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NordFiscal — Skatterådgivning för skandinaver i Spanien</title>
+<meta name="description" content="Betalar du skatt i två länder? Experthjälp för skandinaver i Costa Blanca och Costa del Sol.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pine:#1a3d2b;--pine2:#2d6147;--pine3:#4a8f6a;
+  --gold:#c8962a;--gold2:#e8b84b;--gold3:#f5d78e;
+  --paper:#f5f0e8;--paper2:#ede8da;--paper3:#e0d9cc;
+  --ink:#0e1a0f;--muted:#6b7c6e;--light:#d4e8dc;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Barlow',sans-serif;
+  --cond:'Barlow Condensed',sans-serif;
+  --r:6px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);overflow-x:hidden}
+
+/* ── LANGUAGE BAR ── */
+.lang-bar{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:40px;
+}
+.lang-bar-left{
+  font-family:var(--cond);font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(245,240,232,0.4);
+}
+.lang-buttons{display:flex;gap:4px}
+.lang-btn{
+  background:transparent;border:1px solid rgba(245,240,232,0.15);
+  color:rgba(245,240,232,0.5);font-family:var(--cond);font-size:11px;
+  font-weight:500;letter-spacing:1px;padding:4px 10px;border-radius:3px;
+  cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:5px;
+}
+.lang-btn:hover{border-color:rgba(245,240,232,0.4);color:var(--paper)}
+.lang-btn.active{
+  background:var(--gold);border-color:var(--gold);
+  color:var(--ink);font-weight:700;
+}
+.lang-flag{font-size:13px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:40px;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 40px;height:56px;
+  background:rgba(245,240,232,0.95);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(14,26,15,0.07);
+}
+.nav-logo{
+  font-family:var(--serif);font-size:20px;font-weight:900;
+  color:var(--pine);letter-spacing:-0.5px;text-decoration:none;
+}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{
+  font-size:13px;font-weight:500;color:var(--ink);
+  text-decoration:none;opacity:0.65;transition:opacity 0.2s;
+  font-family:var(--cond);letter-spacing:0.5px;text-transform:uppercase;font-size:11px;
+}
+.nav-links a:hover{opacity:1}
+.nav-cta{
+  background:var(--pine);color:var(--paper)!important;
+  padding:9px 18px;border-radius:var(--r);opacity:1!important;
+  transition:background 0.2s!important;font-size:12px!important;
+  font-weight:600!important;
+}
+.nav-cta:hover{background:var(--pine2)!important}
+.region-badge{
+  display:flex;align-items:center;gap:6px;
+  font-family:var(--cond);font-size:10px;letter-spacing:1px;
+  color:var(--pine3);text-transform:uppercase;
+  background:rgba(74,143,106,0.1);padding:4px 10px;border-radius:20px;
+  border:1px solid rgba(74,143,106,0.2);
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;padding-top:96px;
+  display:grid;grid-template-columns:1fr 1fr;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 100% 50%, rgba(26,61,43,0.06) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(14,26,15,0.025) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(14,26,15,0.025) 40px);
+  pointer-events:none;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 56px 80px 72px;position:relative;z-index:1;
+}
+.eyebrow{
+  font-family:var(--cond);font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--pine3);margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--pine3)}
+.hero h1{
+  font-family:var(--serif);font-size:clamp(40px,5vw,64px);
+  font-weight:900;line-height:1.05;letter-spacing:-1px;
+  color:var(--pine);margin-bottom:24px;
+}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--gold)}
+.hero-sub{
+  font-size:16px;font-weight:300;color:var(--pine);
+  opacity:0.75;line-height:1.75;max-width:420px;margin-bottom:36px;
+}
+.hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:40px}
+.btn-primary{
+  background:var(--pine);color:var(--paper);
+  padding:14px 28px;border-radius:var(--r);font-size:14px;font-weight:600;
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:background 0.2s,transform 0.15s;border:none;cursor:pointer;
+  font-family:var(--sans);
+}
+.btn-primary:hover{background:var(--pine2);transform:translateY(-1px)}
+.btn-ghost{
+  font-size:13px;font-weight:400;color:var(--pine);
+  text-decoration:none;opacity:0.6;transition:opacity 0.2s;
+}
+.btn-ghost:hover{opacity:1}
+.regions-row{
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+.region-tag{
+  display:flex;align-items:center;gap:6px;
+  background:var(--paper2);border:1px solid var(--paper3);
+  border-radius:20px;padding:6px 14px;
+  font-family:var(--cond);font-size:11px;letter-spacing:1px;
+  text-transform:uppercase;color:var(--pine);font-weight:600;
+  transition:all 0.2s;cursor:default;
+}
+.region-tag .dot{
+  width:7px;height:7px;border-radius:50%;background:var(--pine3);flex-shrink:0;
+}
+.region-tag:hover{background:var(--light);border-color:var(--pine3)}
+
+/* ── HERO RIGHT ── */
+.hero-right{
+  background:var(--pine);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 56px;position:relative;overflow:hidden;
+}
+.hero-right::before{
+  content:'NF';
+  font-family:var(--serif);font-size:280px;font-weight:900;
+  color:rgba(255,255,255,0.03);
+  position:absolute;right:-30px;bottom:-40px;line-height:1;
+  pointer-events:none;
+}
+.pain-card{
+  background:rgba(245,240,232,0.06);
+  border:1px solid rgba(245,240,232,0.1);
+  border-radius:10px;padding:22px 26px;margin-bottom:14px;
+  transition:background 0.2s;
+}
+.pain-card:hover{background:rgba(245,240,232,0.09)}
+.pain-card .tag{
+  font-family:var(--cond);font-size:9px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold2);margin-bottom:10px;display:block;
+}
+.pain-card h3{
+  font-family:var(--serif);font-size:17px;font-weight:400;font-style:italic;
+  color:var(--paper);line-height:1.35;margin-bottom:8px;
+}
+.pain-card p{font-size:12px;color:rgba(245,240,232,0.55);line-height:1.6}
+.pain-card .amount{
+  font-family:var(--cond);font-size:18px;font-weight:700;
+  color:var(--gold2);display:block;margin-top:10px;letter-spacing:0.5px;
+}
+.scroll-hint{
+  display:flex;align-items:center;gap:8px;margin-top:20px;
+  font-family:var(--cond);font-size:10px;letter-spacing:1px;
+  text-transform:uppercase;color:rgba(245,240,232,0.3);
+}
+
+/* ── REGIONS SECTION ── */
+.regions-section{
+  background:var(--pine);
+  padding:60px 72px;
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+}
+.regions-section .label{
+  font-family:var(--cond);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold2);opacity:0.7;margin-bottom:12px;
+}
+.regions-section h2{
+  font-family:var(--serif);font-size:clamp(26px,3vw,40px);font-weight:700;
+  line-height:1.15;color:var(--paper);margin-bottom:16px;
+}
+.regions-section h2 em{font-style:italic;font-weight:400;color:var(--gold2)}
+.regions-section p{
+  font-size:14px;font-weight:300;color:rgba(245,240,232,0.7);
+  line-height:1.8;
+}
+.region-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.region-card{
+  background:rgba(245,240,232,0.06);
+  border:1px solid rgba(245,240,232,0.1);
+  border-radius:10px;padding:20px;
+  transition:all 0.25s;
+}
+.region-card:hover{
+  background:rgba(245,240,232,0.11);transform:translateY(-2px);
+  border-color:rgba(200,150,42,0.4);
+}
+.region-card .rc-name{
+  font-family:var(--cond);font-size:14px;font-weight:700;
+  color:var(--paper);letter-spacing:0.5px;margin-bottom:4px;
+}
+.region-card .rc-area{
+  font-size:11px;color:rgba(245,240,232,0.5);line-height:1.5;margin-bottom:8px;
+}
+.region-card .rc-tag{
+  display:inline-block;background:rgba(200,150,42,0.2);
+  color:var(--gold2);font-family:var(--cond);font-size:9px;
+  letter-spacing:1px;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;
+}
+
+/* ── PROBLEM SECTION ── */
+.problem-section{
+  padding:100px 72px;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
+}
+.section-label{
+  font-family:var(--cond);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--pine3);margin-bottom:14px;
+}
+.problem-section h2{
+  font-family:var(--serif);font-size:clamp(28px,3.5vw,46px);font-weight:700;
+  line-height:1.1;color:var(--pine);margin-bottom:18px;
+}
+.problem-section h2 em{font-style:italic;font-weight:400;color:var(--gold)}
+.problem-lead{
+  font-size:16px;font-weight:300;color:var(--pine);opacity:0.75;
+  line-height:1.8;margin-bottom:30px;
+}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+.stat-box{
+  background:var(--paper2);border:1px solid var(--paper3);
+  border-radius:10px;padding:20px;
+}
+.stat-num{
+  font-family:var(--serif);font-size:36px;font-weight:900;
+  color:var(--pine);line-height:1;margin-bottom:6px;
+}
+.stat-label{font-size:11px;color:var(--muted);line-height:1.5}
+.problems-list{list-style:none}
+.problem-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding:18px 0;border-bottom:1px solid rgba(14,26,15,0.07);
+}
+.problem-item:last-child{border-bottom:none}
+.pi-icon{
+  width:34px;height:34px;border-radius:8px;
+  background:var(--pine);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;flex-shrink:0;margin-top:2px;
+}
+.pi-title{font-size:14px;font-weight:600;color:var(--pine);margin-bottom:3px}
+.pi-desc{font-size:12px;color:var(--muted);line-height:1.55}
+
+/* ── SERVICES ── */
+.services-section{background:var(--paper2);padding:100px 72px}
+.services-section h2{
+  font-family:var(--serif);font-size:clamp(28px,3.5vw,46px);font-weight:700;
+  line-height:1.1;color:var(--pine);margin-bottom:8px;
+}
+.services-section h2 em{font-style:italic;font-weight:400;color:var(--gold)}
+.services-section .section-desc{
+  font-size:15px;font-weight:300;color:var(--muted);margin-bottom:48px;max-width:560px;
+}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc-card{
+  background:var(--paper);border:1px solid var(--paper3);
+  border-radius:12px;padding:28px;transition:all 0.25s;
+}
+.svc-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(14,26,15,0.08)}
+.svc-card.featured{
+  background:var(--pine);border-color:var(--pine);
+}
+.svc-tag{
+  font-family:var(--cond);font-size:9px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--pine3);margin-bottom:14px;display:block;
+}
+.svc-card.featured .svc-tag{color:var(--gold2)}
+.svc-price{
+  font-family:var(--serif);font-size:32px;font-weight:900;
+  color:var(--gold);line-height:1;margin-bottom:3px;
+}
+.svc-card.featured .svc-price{color:var(--gold2)}
+.svc-period{font-size:11px;color:var(--muted);margin-bottom:18px}
+.svc-card.featured .svc-period{color:rgba(245,240,232,0.5)}
+.svc-name{font-size:17px;font-weight:600;color:var(--pine);margin-bottom:10px}
+.svc-card.featured .svc-name{color:var(--paper)}
+.svc-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+.svc-card.featured .svc-desc{color:rgba(245,240,232,0.6)}
+.svc-features{list-style:none}
+.svc-features li{
+  font-size:11px;color:var(--muted);padding:4px 0;
+  display:flex;align-items:center;gap:7px;
+}
+.svc-card.featured .svc-features li{color:rgba(245,240,232,0.65)}
+.svc-features li::before{
+  content:'';display:block;width:4px;height:4px;
+  background:var(--pine3);border-radius:50%;flex-shrink:0;
+}
+.svc-card.featured .svc-features li::before{background:var(--gold2)}
+
+/* ── HOW ── */
+.how-section{padding:100px 72px;background:var(--paper)}
+.how-section h2{
+  font-family:var(--serif);font-size:clamp(28px,3.5vw,46px);font-weight:700;
+  color:var(--pine);margin-bottom:56px;
+}
+.how-section h2 em{font-style:italic;font-weight:400;color:var(--gold)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:40px}
+.step-num{
+  font-family:var(--serif);font-size:52px;font-weight:900;
+  color:var(--pine);opacity:0.07;line-height:1;margin-bottom:14px;
+}
+.step-title{font-size:15px;font-weight:600;color:var(--pine);margin-bottom:8px}
+.step-desc{font-size:12px;color:var(--muted);line-height:1.65}
+.step-badge{
+  display:inline-block;margin-top:10px;
+  background:rgba(74,143,106,0.1);color:var(--pine2);
+  font-family:var(--cond);font-size:10px;letter-spacing:1px;
+  text-transform:uppercase;padding:4px 10px;border-radius:20px;
+  border:1px solid rgba(74,143,106,0.2);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-section{background:var(--paper2);padding:100px 72px}
+.testimonials-section h2{
+  font-family:var(--serif);font-size:clamp(28px,3.5vw,46px);font-weight:700;
+  color:var(--pine);margin-bottom:48px;
+}
+.testimonials-section h2 em{font-style:italic;font-weight:400;color:var(--gold)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.t-card{
+  background:var(--paper);border:1px solid var(--paper3);
+  border-radius:12px;padding:28px;
+}
+.t-text{
+  font-family:var(--serif);font-size:15px;font-weight:400;font-style:italic;
+  color:var(--pine);line-height:1.75;margin-bottom:22px;
+}
+.t-author{display:flex;align-items:center;gap:12px}
+.t-avatar{
+  width:38px;height:38px;border-radius:50%;
+  background:var(--pine);display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:600;color:var(--paper);flex-shrink:0;
+}
+.t-name{font-size:13px;font-weight:600;color:var(--pine)}
+.t-meta{font-size:11px;color:var(--muted);margin-top:2px}
+.t-saved{
+  display:inline-flex;align-items:center;gap:5px;margin-top:14px;
+  background:rgba(26,61,43,0.06);border-radius:20px;padding:4px 12px;
+  font-family:var(--cond);font-size:10px;color:var(--pine2);font-weight:600;
+  letter-spacing:0.5px;
+}
+
+/* ── CTA ── */
+.cta-section{
+  background:var(--pine);padding:100px 72px;
+  display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+}
+.cta-section .label{
+  font-family:var(--cond);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold2);opacity:0.6;margin-bottom:12px;
+}
+.cta-section h2{
+  font-family:var(--serif);font-size:clamp(28px,3.5vw,46px);font-weight:700;
+  color:var(--paper);margin-bottom:16px;
+}
+.cta-section h2 em{font-style:italic;font-weight:400;color:var(--gold2)}
+.cta-lead{
+  font-size:15px;font-weight:300;color:rgba(245,240,232,0.65);
+  line-height:1.8;margin-bottom:20px;
+}
+.cta-langs{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.cta-lang{
+  background:rgba(245,240,232,0.08);border:1px solid rgba(245,240,232,0.15);
+  border-radius:20px;padding:5px 12px;
+  font-family:var(--cond);font-size:10px;letter-spacing:1px;
+  color:rgba(245,240,232,0.6);text-transform:uppercase;
+}
+.form-box{
+  background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.1);
+  border-radius:14px;padding:36px;
+}
+.form-title{
+  font-family:var(--serif);font-size:20px;font-weight:700;
+  color:var(--paper);margin-bottom:4px;
+}
+.form-sub{font-size:12px;color:rgba(245,240,232,0.45);margin-bottom:24px}
+.form-group{margin-bottom:14px}
+.form-group label{
+  display:block;font-family:var(--cond);font-size:10px;font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;
+  color:rgba(245,240,232,0.5);margin-bottom:6px;
+}
+.form-group input,.form-group select{
+  width:100%;padding:11px 14px;
+  background:rgba(245,240,232,0.08);
+  border:1px solid rgba(245,240,232,0.13);
+  border-radius:var(--r);color:var(--paper);font-size:13px;
+  font-family:var(--sans);transition:border-color 0.2s;appearance:none;
+}
+.form-group input::placeholder{color:rgba(245,240,232,0.25)}
+.form-group input:focus,.form-group select:focus{
+  outline:none;border-color:var(--gold);
+}
+.form-group select option{background:var(--pine);color:var(--paper)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn-submit{
+  width:100%;background:var(--gold);color:var(--pine);
+  padding:14px;border-radius:var(--r);font-size:14px;font-weight:700;
+  border:none;cursor:pointer;font-family:var(--sans);
+  transition:background 0.2s,transform 0.15s;margin-top:6px;
+}
+.btn-submit:hover{background:var(--gold2);transform:translateY(-1px)}
+.form-note{
+  text-align:center;font-size:10px;
+  color:rgba(245,240,232,0.3);margin-top:12px;line-height:1.6;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:var(--paper);
+  padding:48px 72px 24px;
+}
+.footer-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:48px;margin-bottom:36px;
+}
+.footer-brand .nav-logo{
+  font-family:var(--serif);font-size:20px;font-weight:900;
+  color:var(--paper);margin-bottom:12px;display:block;text-decoration:none;
+}
+.footer-brand .nav-logo span{color:var(--gold)}
+.footer-desc{font-size:12px;color:rgba(245,240,232,0.4);line-height:1.7;max-width:200px}
+.footer-col h4{
+  font-family:var(--cond);font-size:10px;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(245,240,232,0.35);margin-bottom:14px;
+}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px}
+.footer-col a{
+  font-size:12px;color:rgba(245,240,232,0.55);
+  text-decoration:none;transition:color 0.2s;
+}
+.footer-col a:hover{color:var(--paper)}
+.footer-bottom{
+  border-top:1px solid rgba(245,240,232,0.06);
+  padding-top:20px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:12px;
+}
+.footer-legal{font-size:11px;color:rgba(245,240,232,0.25);font-family:var(--cond)}
+.footer-legal-links{display:flex;gap:20px}
+.footer-legal-links a{
+  font-size:10px;color:rgba(245,240,232,0.25);
+  text-decoration:none;font-family:var(--cond);letter-spacing:0.5px;
+  transition:color 0.2s;
+}
+.footer-legal-links a:hover{color:rgba(245,240,232,0.6)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero .eyebrow{animation:fadeUp 0.6s 0.1s both}
+.hero h1{animation:fadeUp 0.7s 0.2s both}
+.hero-sub{animation:fadeUp 0.7s 0.35s both}
+.hero-actions{animation:fadeUp 0.7s 0.45s both}
+.regions-row{animation:fadeUp 0.7s 0.55s both}
+.pain-card:nth-child(1){animation:fadeUp 0.6s 0.2s both}
+.pain-card:nth-child(2){animation:fadeUp 0.6s 0.38s both}
+.pain-card:nth-child(3){animation:fadeUp 0.6s 0.56s both}
+
+/* ── MOBILE ── */
+@media(max-width:960px){
+  .lang-bar{padding:0 20px}
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding-top:96px}
+  .hero-left{padding:48px 24px 36px}
+  .hero-right{display:none}
+  .regions-section{grid-template-columns:1fr;padding:48px 24px;gap:28px}
+  .problem-section,.services-section,.how-section,.testimonials-section,
+  .cta-section{padding:64px 24px}
+  .problem-section{grid-template-columns:1fr;gap:36px}
+  .services-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:24px}
+  .testimonials-grid{grid-template-columns:1fr}
+  .cta-section{grid-template-columns:1fr;gap:36px}
+  .region-cards{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:28px;padding-bottom:0}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .form-row{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <span class="lang-bar-left" data-key="selectLang">Välj språk</span>
+  <div class="lang-buttons">
+    <button class="lang-btn active" onclick="setLang('sv')" data-lang="sv">
+      <span class="lang-flag">🇸🇪</span> SV
+    </button>
+    <button class="lang-btn" onclick="setLang('no')" data-lang="no">
+      <span class="lang-flag">🇳🇴</span> NO
+    </button>
+    <button class="lang-btn" onclick="setLang('da')" data-lang="da">
+      <span class="lang-flag">🇩🇰</span> DA
+    </button>
+    <button class="lang-btn" onclick="setLang('fi')" data-lang="fi">
+      <span class="lang-flag">🇫🇮</span> FI
+    </button>
+    <button class="lang-btn" onclick="setLang('en')" data-lang="en">
+      <span class="lang-flag">🇬🇧</span> EN
+    </button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Nord<span>Fiscal</span></a>
+  <ul class="nav-links">
+    <li><a href="#problemas" data-key="navProblem">Problemet</a></li>
+    <li><a href="#servicios" data-key="navServices">Tjänster</a></li>
+    <li><a href="#regioner" data-key="navRegions">Regioner</a></li>
+    <li><a href="#contacto" class="nav-cta" data-key="navCta">Gratis analys</a></li>
+  </ul>
+  <div class="region-badge">
+    <span>📍</span>
+    <span data-key="navRegionBadge">Costa Blanca · Costa del Sol</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <div class="eyebrow" data-key="heroEyebrow">Skatterådgivning · España</div>
+    <h1 data-key="heroTitle">Betalar du <em>skatt i<br>två länder?</em><br>Det behöver<br>du inte.</h1>
+    <p class="hero-sub" data-key="heroSub">
+      Vi hjälper skandinaver i Costa Blanca och Costa del Sol att undvika dubbelbeskattning, uppfylla sina spanska skattskyldigheter och återkräva felaktigt betalad skatt.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        <span data-key="heroCta">Gratis skatteanalys — 20 min</span> →
+      </a>
+      <a href="#servicios" class="btn-ghost" data-key="heroGhost">Se tjänster ↓</a>
+    </div>
+    <div class="regions-row">
+      <div class="region-tag"><span class="dot"></span><span data-key="regionCB">Costa Blanca</span></div>
+      <div class="region-tag"><span class="dot"></span><span data-key="regionCS">Costa del Sol</span></div>
+      <div class="region-tag"><span class="dot"></span>Torrevieja</div>
+      <div class="region-tag"><span class="dot"></span>Benalmádena</div>
+      <div class="region-tag"><span class="dot"></span>Torremolinos</div>
+      <div class="region-tag"><span class="dot"></span>Fuengirola</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="pain-card">
+      <span class="tag" data-key="pain1tag">Problem 1</span>
+      <h3 data-key="pain1title">Dubbelbeskattning av lönen</h3>
+      <p data-key="pain1desc">Anställd hos ett skandinaviskt företag i Spanien — betalar skatt i båda länderna utan att veta om det.</p>
+      <span class="amount">↑ 2.800–6.000 € / år</span>
+    </div>
+    <div class="pain-card">
+      <span class="tag" data-key="pain2tag">Problem 2</span>
+      <h3 data-key="pain2title">Modelo 720 inte deklarerat</h3>
+      <p data-key="pain2desc">Tillgångar utomlands måste deklareras i Spanien. Utebliven deklaration kan leda till kännbara böter.</p>
+      <span class="amount" data-key="pain2amount">Böter från 1.500 €</span>
+    </div>
+    <div class="pain-card">
+      <span class="tag" data-key="pain3tag">Problem 3</span>
+      <h3 data-key="pain3title">Skattemässigt bosatt utan att veta</h3>
+      <p data-key="pain3desc">183-dagarsregeln gäller, men även "centrum för vitala intressen". Retroaktiva konsekvenser.</p>
+      <span class="amount" data-key="pain3amount">Reglerat på 6 veckor</span>
+    </div>
+    <div class="scroll-hint">↓ <span data-key="scrollHint">Läs mer nedan</span></div>
+  </div>
+</section>
+
+<!-- REGIONS -->
+<section class="regions-section" id="regioner">
+  <div>
+    <div class="label" data-key="regLabel">Våra regioner</div>
+    <h2 data-key="regTitle">Vi täcker hela <em>den spanska<br>Medelhavskusten</em></h2>
+    <p data-key="regDesc">Oavsett om du bor i Torrevieja, Benalmádena, Fuengirola eller Marbella — vi arbetar 100% online och betjänar skandinaver längs hela Medelhavskusten. Samma service, samma expertis, var du än befinner dig.</p>
+  </div>
+  <div class="region-cards">
+    <div class="region-card">
+      <div class="rc-name">Costa Blanca</div>
+      <div class="rc-area">Torrevieja, Orihuela Costa, Guardamar, Alicante</div>
+      <span class="rc-tag" data-key="rcMain">Huvudkontor</span>
+    </div>
+    <div class="region-card">
+      <div class="rc-name">Costa del Sol</div>
+      <div class="rc-area">Benalmádena, Fuengirola, Torremolinos, Marbella, Málaga</div>
+      <span class="rc-tag" data-key="rcNew">Ny region</span>
+    </div>
+    <div class="region-card">
+      <div class="rc-name">Costa Cálida</div>
+      <div class="rc-area">Murcia, Los Alcázares, Mazarrón</div>
+      <span class="rc-tag" data-key="rcAvail">Tillgänglig</span>
+    </div>
+    <div class="region-card">
+      <div class="rc-name">Övriga Spanien</div>
+      <div class="rc-area">Barcelona, Madrid, Valencia, Canarias</div>
+      <span class="rc-tag" data-key="rcOnline">100% online</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section" id="problemas">
+  <div>
+    <div class="section-label" data-key="probLabel">Problemet</div>
+    <h2 data-key="probTitle">De flesta skandinaver i Spanien betalar <em>för mycket skatt</em></h2>
+    <p class="problem-lead" data-key="probLead">
+      Spansk skattelagstiftning är komplex — och ännu mer när den interagerar med svenska, norska, danska eller finska skatteavtal. De flesta expatriater vet inte vad de ska deklarera, var, och när.
+    </p>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-num">83%</div>
+        <div class="stat-label" data-key="stat1">Av skandinaver i Spanien har en oklar skattemässig situation</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3.400€</div>
+        <div class="stat-label" data-key="stat2">Genomsnittlig återbäring per klient vid korrekt hantering</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">4</div>
+        <div class="stat-label" data-key="stat3">Skatteavtal med nordiska länder: Sverige, Norge, Danmark, Finland</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">+2</div>
+        <div class="stat-label" data-key="stat4">Regioner täckta: Costa Blanca och Costa del Sol</div>
+      </div>
+    </div>
+  </div>
+  <ul class="problems-list">
+    <li class="problem-item">
+      <div class="pi-icon">⚖️</div>
+      <div>
+        <div class="pi-title" data-key="prob1title">Dubbelbeskattning av lön och pension</div>
+        <div class="pi-desc" data-key="prob1desc">Konventioner om dubbelbeskattning existerar men tillämpas sällan korrekt utan specialistvägledning.</div>
+      </div>
+    </li>
+    <li class="problem-item">
+      <div class="pi-icon">📄</div>
+      <div>
+        <div class="pi-title" data-key="prob2title">Modelo 720 — okänd skyldighet</div>
+        <div class="pi-desc" data-key="prob2desc">Spanskt krav att deklarera utländska tillgångar över 50.000 €. De flesta känner inte till det.</div>
+      </div>
+    </li>
+    <li class="problem-item">
+      <div class="pi-icon">🏠</div>
+      <div>
+        <div class="pi-title" data-key="prob3title">IRNR — felaktig skatteform</div>
+        <div class="pi-desc" data-key="prob3desc">Många betalar som icke-bosatta när de faktiskt är skattemässigt bosatta i Spanien.</div>
+      </div>
+    </li>
+    <li class="problem-item">
+      <div class="pi-icon">🔍</div>
+      <div>
+        <div class="pi-title" data-key="prob4title">Retroaktiva konsekvenser</div>
+        <div class="pi-desc" data-key="prob4desc">Spanska Skatteverket kan granska de senaste 4 åren. Okänd skuld växer med ränta och sanktioner.</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div class="section-label" data-key="svcLabel">Tjänster och priser</div>
+  <h2 data-key="svcTitle">Transparent prissättning.<br><em>Inga dolda avgifter.</em></h2>
+  <p class="section-desc" data-key="svcDesc">Alla tjänster levereras 100% online. Du laddar upp dokument säkert via vår portal och vi hanterar allt gentemot AEAT.</p>
+  <div class="services-grid">
+    <div class="svc-card">
+      <span class="svc-tag" data-key="svc1tag">Grundpaket</span>
+      <div class="svc-price">79€</div>
+      <div class="svc-period" data-key="svcMonth">per månad</div>
+      <div class="svc-name" data-key="svc1name">IRNR Básico</div>
+      <div class="svc-desc" data-key="svc1desc">För icke-bosatta med fastighet i Spanien. Kvartalsvisa deklarationer och AEAT-kommunikationer.</div>
+      <ul class="svc-features">
+        <li data-key="svc1f1">IRNR kvartalsdeklarationer (4/år)</li>
+        <li data-key="svc1f2">Representación mot AEAT</li>
+        <li data-key="svc1f3">E-poststöd inom 48h</li>
+        <li data-key="svc1f4">Digitalt klientportal</li>
+      </ul>
+    </div>
+    <div class="svc-card featured">
+      <span class="svc-tag" data-key="svc2tag">Mest populär</span>
+      <div class="svc-price">129€</div>
+      <div class="svc-period" data-key="svcMonth2">per månad</div>
+      <div class="svc-name" data-key="svc2name">Residente Pro</div>
+      <div class="svc-desc" data-key="svc2desc">För anställda skandinaver i Spanien. Full IRPF med utländska inkomster och tillämpning av skatteavtal.</div>
+      <ul class="svc-features">
+        <li data-key="svc2f1">Årlig IRPF med utländska inkomster</li>
+        <li data-key="svc2f2">Tillämpning dubbelbeskattningsavtal</li>
+        <li data-key="svc2f3">Modelo 720 (om inga ändringar)</li>
+        <li data-key="svc2f4">Obegränsat e-poststöd</li>
+        <li data-key="svc2f5">Videokonsultation 1×/kvartal</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <span class="svc-tag" data-key="svc3tag">Premium</span>
+      <div class="svc-price">249€</div>
+      <div class="svc-period" data-key="svcMonth3">per månad</div>
+      <div class="svc-name" data-key="svc3name">Internacional Premium</div>
+      <div class="svc-desc" data-key="svc3desc">Komplexa situationer: pensioner, investeringar, fastigheter, eget företag. Proaktiv skatteplanering.</div>
+      <ul class="svc-features">
+        <li data-key="svc3f1">Allt i Residente Pro</li>
+        <li data-key="svc3f2">Modelo 720 komplex</li>
+        <li data-key="svc3f3">Aktiv skatteplanering</li>
+        <li data-key="svc3f4">Obegränsade videosamtal</li>
+        <li data-key="svc3f5">Svar inom 24h garanterat</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how-section" id="como">
+  <div class="section-label" data-key="howLabel">Hur det fungerar</div>
+  <h2 data-key="howTitle">Fyra steg till en <em>klar skattsituation</em></h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title" data-key="step1title">Gratis skatteanalys</div>
+      <div class="step-desc" data-key="step1desc">20 minuters videomöte. Vi analyserar din situation utan kostnad och berättar exakt vad du behöver.</div>
+      <span class="step-badge">20 min</span>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title" data-key="step2title">Personlig plan</div>
+      <div class="step-desc" data-key="step2desc">Vi presenterar en skräddarsydd handlingsplan med tydliga priser. Inga överraskningar.</div>
+      <span class="step-badge" data-key="step2badge">2–3 dagar</span>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title" data-key="step3title">Vi hanterar allt</div>
+      <div class="step-desc" data-key="step3desc">Du laddar upp dokument i vår säkra portal. Vi sköter deklarationer och kommunikationer med AEAT.</div>
+      <span class="step-badge" data-key="step3badge">Löpande</span>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title" data-key="step4title">Klar och säker</div>
+      <div class="step-desc" data-key="step4desc">Din situation är reglerad. Du betalar rätt, varken för mycket eller för lite, i rätt land.</div>
+      <span class="step-badge" data-key="step4badge">Resultat</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonios">
+  <div class="section-label" data-key="testLabel">Klientberättelser</div>
+  <h2 data-key="testTitle">Skandinaver som <em>sparade tusentals euro</em></h2>
+  <div class="testimonials-grid">
+    <div class="t-card">
+      <p class="t-text" data-key="test1text">"Jag hade betalat skatt i Sverige och Spanien i tre år. NordFiscal rättade situationen på sex veckor och hjälpte mig att återkräva pengar retroaktivt."</p>
+      <div class="t-author">
+        <div class="t-avatar">MJ</div>
+        <div>
+          <div class="t-name">Magnus J.</div>
+          <div class="t-meta">Torrevieja — Costa Blanca</div>
+        </div>
+      </div>
+      <div class="t-saved">💶 <span data-key="test1saved">Återkrävde 4.200 €</span></div>
+    </div>
+    <div class="t-card">
+      <p class="t-text" data-key="test2text">"Hade aldrig hört talas om Modelo 720. Min revisor i Norge visste inte ens att det existerade. NordFiscal löste allt på distans, på norska, utan att jag behövde resa."</p>
+      <div class="t-author">
+        <div class="t-avatar">AL</div>
+        <div>
+          <div class="t-name">Astrid L.</div>
+          <div class="t-meta">Benalmádena — Costa del Sol</div>
+        </div>
+      </div>
+      <div class="t-saved">✅ <span data-key="test2saved">Regulariserat utan böter</span></div>
+    </div>
+    <div class="t-card">
+      <p class="t-text" data-key="test3text">"Egenföretagare med verksamhet i Finland och Spanien. Min situation var ett pussel. De löste det och nu sover jag gott om nätterna."</p>
+      <div class="t-author">
+        <div class="t-avatar">PH</div>
+        <div>
+          <div class="t-name">Pekka H.</div>
+          <div class="t-meta">Fuengirola — Costa del Sol</div>
+        </div>
+      </div>
+      <div class="t-saved">💶 <span data-key="test3saved">Sparade 3.800 € / år</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+  <div>
+    <div class="label" data-key="ctaLabel">Gratis skatteanalys</div>
+    <h2 data-key="ctaTitle">Börja med <em>20 minuter</em><br>som kan ändra allt</h2>
+    <p class="cta-lead" data-key="ctaDesc">Din situation är unik. Vi erbjuder en gratis skatteanalys på 20 minuter — utan kostnad och utan förpliktelse — där vi berättar exakt vad du behöver.</p>
+    <p class="cta-lead" style="font-size:13px" data-key="ctaLangs2">Vi svarar på ditt språk. Alla möten sker via videolänk.</p>
+    <div class="cta-langs">
+      <span class="cta-lang">🇸🇪 Svenska</span>
+      <span class="cta-lang">🇳🇴 Norsk</span>
+      <span class="cta-lang">🇩🇰 Dansk</span>
+      <span class="cta-lang">🇫🇮 Suomi</span>
+      <span class="cta-lang">🇬🇧 English</span>
+    </div>
+  </div>
+  <div class="form-box">
+    <div class="form-title" data-key="formTitle">Boka gratis analys</div>
+    <div class="form-sub" data-key="formSub">Värderat till 197 € — kostnadsfritt för dig</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label data-key="fName">Förnamn</label>
+        <input type="text" data-placeholder-key="fNamePh">
+      </div>
+      <div class="form-group">
+        <label data-key="fLast">Efternamn</label>
+        <input type="text" data-placeholder-key="fLastPh">
+      </div>
+    </div>
+    <div class="form-group">
+      <label data-key="fEmail">E-postadress</label>
+      <input type="email" placeholder="namn@email.se">
+    </div>
+    <div class="form-group">
+      <label data-key="fRegion">Region i Spanien</label>
+      <select id="regionSelect">
+        <option value="" data-key="fRegionPh">Välj din region...</option>
+        <option value="cb">Costa Blanca (Torrevieja, Alicante...)</option>
+        <option value="cs">Costa del Sol (Benalmádena, Fuengirola, Marbella...)</option>
+        <option value="cc">Costa Cálida (Murcia...)</option>
+        <option value="other" data-key="fRegionOther">Annan region</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label data-key="fSit">Din situation</label>
+      <select>
+        <option value="" data-key="fSitPh">Välj din situation...</option>
+        <option data-key="fSit1">Anställd i spanskt/skandinaviskt företag</option>
+        <option data-key="fSit2">Pensionär med pension från hemlandet</option>
+        <option data-key="fSit3">Egenföretagare / autónomo</option>
+        <option data-key="fSit4">Fastighetsägare icke-bosatt</option>
+        <option data-key="fSit5">Nyligen anlänt till Spanien</option>
+        <option data-key="fSit6">Annan situation</option>
+      </select>
+    </div>
+    <button class="btn-submit" onclick="handleSubmit()" data-key="fSubmit">
+      Boka gratis skatteanalys →
+    </button>
+    <div class="form-note" data-key="fNote">Inga förpliktelser · Svar inom 24h · På ditt språk</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">Nord<span>Fiscal</span></a>
+      <p class="footer-desc" data-key="footerDesc">Skatterådgivning för skandinaver i Spanien. Costa Blanca & Costa del Sol.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-key="footerServices">Tjänster</h4>
+      <ul>
+        <li><a href="#">IRNR Básico</a></li>
+        <li><a href="#">Residente Pro</a></li>
+        <li><a href="#">Internacional Premium</a></li>
+        <li><a href="#">Modelo 720</a></li>
+        <li><a href="#" data-key="footerPlanning">Skatteplanering</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-key="footerResources">Resurser</h4>
+      <ul>
+        <li><a href="#" data-key="footerGuide">Skatteguide 2025</a></li>
+        <li><a href="#">Modelo 720</a></li>
+        <li><a href="#" data-key="footerDDI">Dubbelbeskattning</a></li>
+        <li><a href="#">Ley Beckham</a></li>
+        <li><a href="#" data-key="footerBlog">Blogg</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-key="footerContact">Kontakt</h4>
+      <ul>
+        <li><a href="#">hola@nordfiscal.es</a></li>
+        <li><a href="#">+34 965 XX XX XX</a></li>
+        <li><a href="#" data-key="footerCB">Costa Blanca</a></li>
+        <li><a href="#" data-key="footerCS">Costa del Sol</a></li>
+        <li><a href="#" data-key="footerBook">Boka videomöte</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-legal">© 2025 NordFiscal · Colegiado nº REAF-XXXX · RC Profesional</span>
+    <div class="footer-legal-links">
+      <a href="#" data-key="footerPrivacy">Integritetspolicy</a>
+      <a href="#" data-key="footerCookies">Cookies</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── TRANSLATIONS ──
+const T = {
+  sv: {
+    selectLang:"Välj språk", navProblem:"Problemet", navServices:"Tjänster",
+    navRegions:"Regioner", navCta:"Gratis analys",
+    navRegionBadge:"Costa Blanca · Costa del Sol",
+    heroEyebrow:"Skatterådgivning · España",
+    heroTitle:'Betalar du <em>skatt i<br>två länder?</em><br>Det behöver<br>du inte.',
+    heroSub:"Vi hjälper skandinaver i Costa Blanca och Costa del Sol att undvika dubbelbeskattning, uppfylla sina spanska skattskyldigheter och återkräva felaktigt betalad skatt.",
+    heroCta:"Gratis skatteanalys — 20 min", heroGhost:"Se tjänster ↓",
+    regionCB:"Costa Blanca", regionCS:"Costa del Sol",
+    pain1tag:"Problem 1", pain1title:"Dubbelbeskattning av lönen",
+    pain1desc:"Anställd hos ett skandinaviskt företag i Spanien — betalar skatt i båda länderna utan att veta om det.",
+    pain2tag:"Problem 2", pain2title:"Modelo 720 inte deklarerat",
+    pain2desc:"Tillgångar utomlands måste deklareras i Spanien. Utebliven deklaration kan leda till kännbara böter.",
+    pain2amount:"Böter från 1.500 €",
+    pain3tag:"Problem 3", pain3title:"Skattemässigt bosatt utan att veta",
+    pain3desc:'183-dagarsregeln gäller, men även "centrum för vitala intressen". Retroaktiva konsekvenser.',
+    pain3amount:"Reglerat på 6 veckor",
+    scrollHint:"Läs mer nedan",
+    regLabel:"Våra regioner",
+    regTitle:'Vi täcker hela <em>den spanska<br>Medelhavskusten</em>',
+    regDesc:"Oavsett om du bor i Torrevieja, Benalmádena, Fuengirola eller Marbella — vi arbetar 100% online och betjänar skandinaver längs hela Medelhavskusten.",
+    rcMain:"Huvudkontor", rcNew:"Ny region", rcAvail:"Tillgänglig", rcOnline:"100% online",
+    probLabel:"Problemet",
+    probTitle:'De flesta skandinaver i Spanien betalar <em>för mycket skatt</em>',
+    probLead:"Spansk skattelagstiftning är komplex — och ännu mer när den interagerar med svenska, norska, danska eller finska skatteavtal.",
+    stat1:"Av skandinaver i Spanien har oklar skattemässig situation",
+    stat2:"Genomsnittlig återbäring per klient vid korrekt hantering",
+    stat3:"Skatteavtal: Sverige, Norge, Danmark, Finland",
+    stat4:"Regioner täckta: Costa Blanca och Costa del Sol",
+    prob1title:"Dubbelbeskattning av lön och pension",
+    prob1desc:"Konventioner om dubbelbeskattning tillämpas sällan korrekt utan specialistvägledning.",
+    prob2title:"Modelo 720 — okänd skyldighet",
+    prob2desc:"Spanskt krav att deklarera utländska tillgångar över 50.000 €. De flesta känner inte till det.",
+    prob3title:"IRNR — felaktig skatteform",
+    prob3desc:"Många betalar som icke-bosatta när de faktiskt är skattemässigt bosatta i Spanien.",
+    prob4title:"Retroaktiva konsekvenser",
+    prob4desc:"Spanska Skatteverket kan granska de senaste 4 åren. Okänd skuld växer med ränta.",
+    svcLabel:"Tjänster och priser",
+    svcTitle:'Transparent prissättning.<br><em>Inga dolda avgifter.</em>',
+    svcDesc:"Alla tjänster levereras 100% online. Du laddar upp dokument via vår portal och vi hanterar allt gentemot AEAT.",
+    svc1tag:"Grundpaket", svcMonth:"per månad", svc1name:"IRNR Básico",
+    svc1desc:"För icke-bosatta med fastighet i Spanien. Kvartalsvisa deklarationer.",
+    svc1f1:"IRNR kvartalsdeklarationer (4/år)", svc1f2:"Representación mot AEAT",
+    svc1f3:"E-poststöd inom 48h", svc1f4:"Digitalt klientportal",
+    svc2tag:"Mest populär", svcMonth2:"per månad", svc2name:"Residente Pro",
+    svc2desc:"För anställda skandinaver. Full IRPF med utländska inkomster och skatteavtal.",
+    svc2f1:"Årlig IRPF med utländska inkomster", svc2f2:"Dubbelbeskattningsavtal",
+    svc2f3:"Modelo 720 (inga ändringar)", svc2f4:"Obegränsat e-poststöd",
+    svc2f5:"Videokonsultation 1×/kvartal",
+    svc3tag:"Premium", svcMonth3:"per månad", svc3name:"Internacional Premium",
+    svc3desc:"Komplexa situationer: pensioner, investeringar, eget företag.",
+    svc3f1:"Allt i Residente Pro", svc3f2:"Modelo 720 komplex",
+    svc3f3:"Aktiv skatteplanering", svc3f4:"Obegränsade videosamtal",
+    svc3f5:"Svar inom 24h garanterat",
+    howLabel:"Hur det fungerar",
+    howTitle:'Fyra steg till en <em>klar skattsituation</em>',
+    step1title:"Gratis skatteanalys", step1desc:"20 min videomöte. Vi analyserar din situation gratis.",
+    step2title:"Personlig plan", step2desc:"Skräddarsydd handlingsplan med tydliga priser.", step2badge:"2–3 dagar",
+    step3title:"Vi hanterar allt", step3desc:"Du laddar upp dokument. Vi sköter deklarationer och AEAT.", step3badge:"Löpande",
+    step4title:"Klar och säker", step4desc:"Din situation är reglerad. Du betalar rätt i rätt land.", step4badge:"Resultat",
+    testLabel:"Klientberättelser",
+    testTitle:'Skandinaver som <em>sparade tusentals euro</em>',
+    test1text:'"Jag hade betalat skatt i Sverige och Spanien i tre år. NordFiscal rättade situationen på sex veckor och hjälpte mig att återkräva pengar retroaktivt."',
+    test1saved:"Återkrävde 4.200 €",
+    test2text:'"Hade aldrig hört talas om Modelo 720. NordFiscal löste allt på distans, på norska, utan att jag behövde resa."',
+    test2saved:"Regulariserat utan böter",
+    test3text:'"Egenföretagare med verksamhet i Finland och Spanien. Min situation var ett pussel. De löste det och nu sover jag gott."',
+    test3saved:"Sparade 3.800 € / år",
+    ctaLabel:"Gratis skatteanalys",
+    ctaTitle:'Börja med <em>20 minuter</em><br>som kan ändra allt',
+    ctaDesc:"Din situation är unik. Vi erbjuder en gratis skatteanalys på 20 minuter — utan kostnad och utan förpliktelse.",
+    ctaLangs2:"Vi svarar på ditt språk. Alla möten sker via videolänk.",
+    formTitle:"Boka gratis analys", formSub:"Värderat till 197 € — kostnadsfritt",
+    fName:"Förnamn", fNamePh:"Anders", fLast:"Efternamn", fLastPh:"Lindqvist",
+    fEmail:"E-postadress", fRegion:"Region i Spanien", fRegionPh:"Välj din region...",
+    fRegionOther:"Annan region",
+    fSit:"Din situation", fSitPh:"Välj din situation...",
+    fSit1:"Anställd i spanskt/skandinaviskt företag",
+    fSit2:"Pensionär med pension från hemlandet",
+    fSit3:"Egenföretagare / autónomo",
+    fSit4:"Fastighetsägare icke-bosatt",
+    fSit5:"Nyligen anlänt till Spanien",
+    fSit6:"Annan situation",
+    fSubmit:"Boka gratis skatteanalys →",
+    fNote:"Inga förpliktelser · Svar inom 24h · På ditt språk",
+    footerDesc:"Skatterådgivning för skandinaver i Spanien. Costa Blanca & Costa del Sol.",
+    footerServices:"Tjänster", footerResources:"Resurser", footerContact:"Kontakt",
+    footerPlanning:"Skatteplanering", footerGuide:"Skatteguide 2025",
+    footerDDI:"Dubbelbeskattning", footerBlog:"Blogg",
+    footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Boka videomöte",
+    footerPrivacy:"Integritetspolicy", footerCookies:"Cookies",
+  },
+  no: {
+    selectLang:"Velg språk", navProblem:"Problemet", navServices:"Tjenester",
+    navRegions:"Regioner", navCta:"Gratis analyse",
+    navRegionBadge:"Costa Blanca · Costa del Sol",
+    heroEyebrow:"Skatterådgivning · España",
+    heroTitle:'Betaler du <em>skatt i<br>to land?</em><br>Det trenger<br>du ikke.',
+    heroSub:"Vi hjelper skandinaver i Costa Blanca og Costa del Sol med å unngå dobbeltbeskatning, oppfylle sine spanske skatteforpliktelser og kreve tilbake feilaktig betalt skatt.",
+    heroCta:"Gratis skatteanalyse — 20 min", heroGhost:"Se tjenester ↓",
+    regionCB:"Costa Blanca", regionCS:"Costa del Sol",
+    pain1tag:"Problem 1", pain1title:"Dobbeltbeskatning av lønn",
+    pain1desc:"Ansatt i et skandinavisk selskap i Spania — betaler skatt i begge land uten å vite om det.",
+    pain2tag:"Problem 2", pain2title:"Modelo 720 ikke deklarert",
+    pain2desc:"Utenlandske eiendeler må deklareres i Spania. Manglende deklarasjon kan føre til store bøter.",
+    pain2amount:"Bøter fra 1.500 €",
+    pain3tag:"Problem 3", pain3title:"Skattemessig bosatt uten å vite det",
+    pain3desc:'183-dagersregelen gjelder, men også "sentrum for vitale interesser". Retroaktive konsekvenser.',
+    pain3amount:"Ordnet på 6 uker",
+    scrollHint:"Les mer nedenfor",
+    regLabel:"Våre regioner",
+    regTitle:'Vi dekker hele <em>den spanske<br>Middelhavskysten</em>',
+    regDesc:"Enten du bor i Torrevieja, Benalmádena, Fuengirola eller Marbella — vi jobber 100% online og betjener skandinaver langs hele Middelhavskysten.",
+    rcMain:"Hovedkontor", rcNew:"Ny region", rcAvail:"Tilgjengelig", rcOnline:"100% online",
+    probLabel:"Problemet",
+    probTitle:'De fleste skandinaver i Spania betaler <em>for mye skatt</em>',
+    probLead:"Spansk skattelovgivning er kompleks — enda mer når den samhandler med norske, svenske, danske eller finske skatteavtaler.",
+    stat1:"Av skandinaver i Spania har uklar skattemessig situasjon",
+    stat2:"Gjennomsnittlig tilbakebetaling per klient ved korrekt behandling",
+    stat3:"Skatteavtaler: Sverige, Norge, Danmark, Finland",
+    stat4:"Regioner dekket: Costa Blanca og Costa del Sol",
+    prob1title:"Dobbeltbeskatning av lønn og pensjon",
+    prob1desc:"Skatteavtaler finnes men anvendes sjelden korrekt uten ekspertveiledning.",
+    prob2title:"Modelo 720 — ukjent plikt",
+    prob2desc:"Spansk krav om å deklarere utenlandske eiendeler over 50.000 €. De fleste kjenner ikke til det.",
+    prob3title:"IRNR — feil skatteform",
+    prob3desc:"Mange betaler som ikke-bosatte når de faktisk er skattemessig bosatt i Spania.",
+    prob4title:"Retroaktive konsekvenser",
+    prob4desc:"Spansk skattemyndighet kan gjennomgå de siste 4 år. Ukjent gjeld vokser med renter.",
+    svcLabel:"Tjenester og priser",
+    svcTitle:'Transparent prissetting.<br><em>Ingen skjulte avgifter.</em>',
+    svcDesc:"Alle tjenester leveres 100% online. Du laster opp dokumenter via vår portal og vi håndterer alt mot AEAT.",
+    svc1tag:"Grunnpakke", svcMonth:"per måned", svc1name:"IRNR Básico",
+    svc1desc:"For ikke-bosatte med eiendom i Spania. Kvartalsvise deklarasjoner.",
+    svc1f1:"IRNR kvartalsdeklarasjoner (4/år)", svc1f2:"Representación mot AEAT",
+    svc1f3:"E-poststøtte innen 48t", svc1f4:"Digitalt klientportal",
+    svc2tag:"Mest populær", svcMonth2:"per måned", svc2name:"Residente Pro",
+    svc2desc:"For ansatte skandinaver. Full IRPF med utenlandske inntekter og skatteavtaler.",
+    svc2f1:"Årlig IRPF med utenlandske inntekter", svc2f2:"Dobbeltbeskatningsavtaler",
+    svc2f3:"Modelo 720 (ingen endringer)", svc2f4:"Ubegrenset e-poststøtte",
+    svc2f5:"Videokonsultasjon 1×/kvartal",
+    svc3tag:"Premium", svcMonth3:"per måned", svc3name:"Internacional Premium",
+    svc3desc:"Komplekse situasjoner: pensjoner, investeringer, eget selskap.",
+    svc3f1:"Alt i Residente Pro", svc3f2:"Modelo 720 kompleks",
+    svc3f3:"Aktiv skatteplanlegging", svc3f4:"Ubegrenset videosamtaler",
+    svc3f5:"Svar innen 24t garantert",
+    howLabel:"Slik fungerer det",
+    howTitle:'Fire steg til en <em>klar skattesituasjon</em>',
+    step1title:"Gratis skatteanalyse", step1desc:"20 min videomøte. Vi analyserer din situasjon gratis.",
+    step2title:"Personlig plan", step2desc:"Skreddersydd handlingsplan med klare priser.", step2badge:"2–3 dager",
+    step3title:"Vi håndterer alt", step3desc:"Du laster opp dokumenter. Vi tar oss av deklarasjoner og AEAT.", step3badge:"Løpende",
+    step4title:"Klar og sikker", step4desc:"Din situasjon er regulert. Du betaler riktig skatt i riktig land.", step4badge:"Resultat",
+    testLabel:"Klienthistorier",
+    testTitle:'Skandinaver som <em>sparte tusenvis av euro</em>',
+    test1text:'"Jeg hadde betalt skatt i Sverige og Spania i tre år. NordFiscal rettet situasjonen på seks uker og hjalp meg med å kreve tilbake penger retroaktivt."',
+    test1saved:"Krevde tilbake 4.200 €",
+    test2text:'"Hadde aldri hørt om Modelo 720. NordFiscal løste alt på avstand, på norsk, uten at jeg måtte reise."',
+    test2saved:"Regulert uten bøter",
+    test3text:'"Selvstendig næringsdrivende med virksomhet i Finland og Spania. Min situasjon var et puslespill. De løste det og nå sover jeg godt."',
+    test3saved:"Sparte 3.800 € / år",
+    ctaLabel:"Gratis skatteanalyse",
+    ctaTitle:'Start med <em>20 minutter</em><br>som kan endre alt',
+    ctaDesc:"Din situasjon er unik. Vi tilbyr en gratis skatteanalyse på 20 minutter — uten kostnad og uten forpliktelse.",
+    ctaLangs2:"Vi svarer på ditt språk. Alle møter skjer via videolink.",
+    formTitle:"Book gratis analyse", formSub:"Verdt 197 € — kostnadsfritt for deg",
+    fName:"Fornavn", fNamePh:"Anders", fLast:"Etternavn", fLastPh:"Johansen",
+    fEmail:"E-postadresse", fRegion:"Region i Spania", fRegionPh:"Velg din region...",
+    fRegionOther:"Annen region",
+    fSit:"Din situasjon", fSitPh:"Velg din situasjon...",
+    fSit1:"Ansatt i spansk/skandinavisk selskap",
+    fSit2:"Pensjonist med pensjon fra hjemlandet",
+    fSit3:"Selvstendig næringsdrivende / autónomo",
+    fSit4:"Eiendomseier ikke-bosatt",
+    fSit5:"Nylig ankommet til Spania",
+    fSit6:"Annen situasjon",
+    fSubmit:"Book gratis skatteanalyse →",
+    fNote:"Ingen forpliktelser · Svar innen 24t · På ditt språk",
+    footerDesc:"Skatterådgivning for skandinaver i Spania. Costa Blanca & Costa del Sol.",
+    footerServices:"Tjenester", footerResources:"Ressurser", footerContact:"Kontakt",
+    footerPlanning:"Skatteplanlegging", footerGuide:"Skatteguide 2025",
+    footerDDI:"Dobbeltbeskatning", footerBlog:"Blogg",
+    footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Book videomøte",
+    footerPrivacy:"Personvernpolicy", footerCookies:"Informasjonskapsler",
+  },
+  da: {
+    selectLang:"Vælg sprog", navProblem:"Problemet", navServices:"Tjenester",
+    navRegions:"Regioner", navCta:"Gratis analyse",
+    navRegionBadge:"Costa Blanca · Costa del Sol",
+    heroEyebrow:"Skatterådgivning · España",
+    heroTitle:'Betaler du <em>skat i<br>to lande?</em><br>Det behøver<br>du ikke.',
+    heroSub:"Vi hjælper skandinaver i Costa Blanca og Costa del Sol med at undgå dobbeltbeskatning, opfylde deres spanske skatteforpligtelser og kræve forkert betalt skat tilbage.",
+    heroCta:"Gratis skatteanalyse — 20 min", heroGhost:"Se tjenester ↓",
+    regionCB:"Costa Blanca", regionCS:"Costa del Sol",
+    pain1tag:"Problem 1", pain1title:"Dobbeltbeskatning af løn",
+    pain1desc:"Ansat i et skandinavisk firma i Spanien — betaler skat i begge lande uden at vide det.",
+    pain2tag:"Problem 2", pain2title:"Modelo 720 ikke deklareret",
+    pain2desc:"Udenlandske aktiver skal deklareres i Spanien. Manglende deklaration kan føre til store bøder.",
+    pain2amount:"Bøder fra 1.500 €",
+    pain3tag:"Problem 3", pain3title:"Skattemæssigt hjemmehørende uden at vide det",
+    pain3desc:'183-dagesreglen gælder, men også "centrum for vitale interesser". Retroaktive konsekvenser.',
+    pain3amount:"Ordnet på 6 uger",
+    scrollHint:"Læs mere nedenfor",
+    regLabel:"Vores regioner",
+    regTitle:'Vi dækker hele <em>den spanske<br>Middelhavskyst</em>',
+    regDesc:"Uanset om du bor i Torrevieja, Benalmádena, Fuengirola eller Marbella — vi arbejder 100% online og betjener skandinaver langs hele Middelhavskysten.",
+    rcMain:"Hovedkontor", rcNew:"Ny region", rcAvail:"Tilgængelig", rcOnline:"100% online",
+    probLabel:"Problemet",
+    probTitle:'De fleste skandinaver i Spanien betaler <em>for meget skat</em>',
+    probLead:"Spansk skattelovgivning er kompleks — endnu mere når den interagerer med danske, svenske, norske eller finske skatteaftaler.",
+    stat1:"Af skandinaver i Spanien har uklar skattemæssig situation",
+    stat2:"Gennemsnitlig tilbagebetaling pr. klient ved korrekt håndtering",
+    stat3:"Skatteaftaler: Sverige, Norge, Danmark, Finland",
+    stat4:"Regioner dækket: Costa Blanca og Costa del Sol",
+    prob1title:"Dobbeltbeskatning af løn og pension",
+    prob1desc:"Dobbeltbeskatningskonventioner anvendes sjældent korrekt uden ekspertvejledning.",
+    prob2title:"Modelo 720 — ukendt pligt",
+    prob2desc:"Spansk krav om at deklarere udenlandske aktiver over 50.000 €. De fleste kender det ikke.",
+    prob3title:"IRNR — forkert skatteform",
+    prob3desc:"Mange betaler som ikke-hjemmehørende, når de faktisk er skattemæssigt hjemmehørende i Spanien.",
+    prob4title:"Retroaktive konsekvenser",
+    prob4desc:"Spansk skattemyndighed kan gennemgå de seneste 4 år. Ukendt gæld vokser med renter.",
+    svcLabel:"Tjenester og priser",
+    svcTitle:'Transparent prissætning.<br><em>Ingen skjulte gebyrer.</em>',
+    svcDesc:"Alle tjenester leveres 100% online. Du uploader dokumenter via vores portal, og vi håndterer alt over for AEAT.",
+    svc1tag:"Grundpakke", svcMonth:"pr. måned", svc1name:"IRNR Básico",
+    svc1desc:"For ikke-hjemmehørende med ejendom i Spanien. Kvartalsvise deklarationer.",
+    svc1f1:"IRNR kvartalsdeklarationer (4/år)", svc1f2:"Representación over for AEAT",
+    svc1f3:"E-mailsupport inden 48t", svc1f4:"Digitalt klientportal",
+    svc2tag:"Mest populær", svcMonth2:"pr. måned", svc2name:"Residente Pro",
+    svc2desc:"For ansatte skandinaver. Fuld IRPF med udenlandske indkomster og skatteaftaler.",
+    svc2f1:"Årlig IRPF med udenlandske indkomster", svc2f2:"Dobbeltbeskatningsaftaler",
+    svc2f3:"Modelo 720 (ingen ændringer)", svc2f4:"Ubegrænset e-mailsupport",
+    svc2f5:"Videokonsultation 1×/kvartal",
+    svc3tag:"Premium", svcMonth3:"pr. måned", svc3name:"Internacional Premium",
+    svc3desc:"Komplekse situationer: pensioner, investeringer, eget firma.",
+    svc3f1:"Alt i Residente Pro", svc3f2:"Modelo 720 kompleks",
+    svc3f3:"Aktiv skatteplanlægning", svc3f4:"Ubegrænsede videoopkald",
+    svc3f5:"Svar inden 24t garanteret",
+    howLabel:"Sådan fungerer det",
+    howTitle:'Fire trin til en <em>klar skattesituation</em>',
+    step1title:"Gratis skatteanalyse", step1desc:"20 min videomøde. Vi analyserer din situation gratis.",
+    step2title:"Personlig plan", step2desc:"Skræddersyet handlingsplan med klare priser.", step2badge:"2–3 dage",
+    step3title:"Vi håndterer alt", step3desc:"Du uploader dokumenter. Vi klarer deklarationer og AEAT.", step3badge:"Løbende",
+    step4title:"Klar og sikker", step4desc:"Din situation er reguleret. Du betaler den rigtige skat.", step4badge:"Resultat",
+    testLabel:"Klienthistorier",
+    testTitle:'Skandinaver der <em>sparede tusindvis af euro</em>',
+    test1text:'"Jeg havde betalt skat i Sverige og Spanien i tre år. NordFiscal rettede situationen på seks uger og hjalp mig med at kræve penge tilbage retroaktivt."',
+    test1saved:"Krævede 4.200 € tilbage",
+    test2text:'"Havde aldrig hørt om Modelo 720. NordFiscal løste alt på afstand, på dansk, uden at jeg skulle rejse."',
+    test2saved:"Reguleret uden bøder",
+    test3text:'"Selvstændig med aktivitet i Finland og Spanien. Min situation var et puslespil. De løste det og nu sover jeg godt."',
+    test3saved:"Sparede 3.800 € / år",
+    ctaLabel:"Gratis skatteanalyse",
+    ctaTitle:'Start med <em>20 minutter</em><br>der kan ændre alt',
+    ctaDesc:"Din situation er unik. Vi tilbyder en gratis skatteanalyse på 20 minutter — uden omkostninger og uden forpligtelse.",
+    ctaLangs2:"Vi svarer på dit sprog. Alle møder foregår via videolink.",
+    formTitle:"Book gratis analyse", formSub:"Værdsat til 197 € — gratis for dig",
+    fName:"Fornavn", fNamePh:"Anders", fLast:"Efternavn", fLastPh:"Andersen",
+    fEmail:"E-mailadresse", fRegion:"Region i Spanien", fRegionPh:"Vælg din region...",
+    fRegionOther:"Anden region",
+    fSit:"Din situation", fSitPh:"Vælg din situation...",
+    fSit1:"Ansat i spansk/skandinavisk firma",
+    fSit2:"Pensionist med pension fra hjemlandet",
+    fSit3:"Selvstændig / autónomo",
+    fSit4:"Ejendomsejer ikke-hjemmehørende",
+    fSit5:"Nyligt ankommet til Spanien",
+    fSit6:"Anden situation",
+    fSubmit:"Book gratis skatteanalyse →",
+    fNote:"Ingen forpligtelser · Svar inden 24t · På dit sprog",
+    footerDesc:"Skatterådgivning for skandinaver i Spanien. Costa Blanca & Costa del Sol.",
+    footerServices:"Tjenester", footerResources:"Ressourcer", footerContact:"Kontakt",
+    footerPlanning:"Skatteplanlægning", footerGuide:"Skatteguide 2025",
+    footerDDI:"Dobbeltbeskatning", footerBlog:"Blog",
+    footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Book videomøde",
+    footerPrivacy:"Privatlivspolitik", footerCookies:"Cookies",
+  },
+  fi: {
+    selectLang:"Valitse kieli", navProblem:"Ongelma", navServices:"Palvelut",
+    navRegions:"Alueet", navCta:"Ilmainen analyysi",
+    navRegionBadge:"Costa Blanca · Costa del Sol",
+    heroEyebrow:"Veroneuvonta · España",
+    heroTitle:'Maksatko veroja <em>kahdessa<br>maassa?</em><br>Se ei ole<br>pakollista.',
+    heroSub:"Autamme skandinaaveja Costa Blancalla ja Costa del Solilla välttämään kaksinkertaisen verotuksen, täyttämään espanjalaiset verovelvoitteensa ja vaatimaan takaisin virheellisesti maksetut verot.",
+    heroCta:"Ilmainen veroanalyysi — 20 min", heroGhost:"Katso palvelut ↓",
+    regionCB:"Costa Blanca", regionCS:"Costa del Sol",
+    pain1tag:"Ongelma 1", pain1title:"Palkan kaksinkertainen verotus",
+    pain1desc:"Skandinaavisen yrityksen palveluksessa Espanjassa — maksaa veroja molemmissa maissa tietämättään.",
+    pain2tag:"Ongelma 2", pain2title:"Modelo 720 ilmoittamatta",
+    pain2desc:"Ulkomaiset varat on ilmoitettava Espanjassa. Ilmoittamatta jättäminen voi johtaa tuntuviin sakkoihin.",
+    pain2amount:"Sakot alkaen 1.500 €",
+    pain3tag:"Ongelma 3", pain3title:"Verotuksellinen asukas tietämättään",
+    pain3desc:'183 päivän sääntö pätee, mutta myös "elintärkeiden intressien keskus". Takautuvat seuraukset.',
+    pain3amount:"Järjestetty 6 viikossa",
+    scrollHint:"Lue lisää alta",
+    regLabel:"Alueemme",
+    regTitle:'Katamme koko <em>Espanjan<br>Välimeren rannikon</em>',
+    regDesc:"Asuitpa sitten Torreviejassa, Benalmádenassa, Fuengirolassa tai Marbellassa — toimimme 100% verkossa ja palvelemme skandinaaveja koko Välimeren rannikolla.",
+    rcMain:"Päätoimisto", rcNew:"Uusi alue", rcAvail:"Saatavilla", rcOnline:"100% verkossa",
+    probLabel:"Ongelma",
+    probTitle:'Useimmat skandinaavit Espanjassa maksavat <em>liikaa veroja</em>',
+    probLead:"Espanjalainen verolainsäädäntö on monimutkainen — vielä enemmän kun se on vuorovaikutuksessa suomalaisten, ruotsalaisten, norjalaisten tai tanskalaisten verosopimusten kanssa.",
+    stat1:"Skandinaaveista Espanjassa on epäselvä verotuksellinen tilanne",
+    stat2:"Keskimääräinen palautus asiakasta kohti oikealla käsittelyllä",
+    stat3:"Verosopimukset: Ruotsi, Norja, Tanska, Suomi",
+    stat4:"Katetut alueet: Costa Blanca ja Costa del Sol",
+    prob1title:"Palkan ja eläkkeen kaksinkertainen verotus",
+    prob1desc:"Kaksinkertaisen verotuksen sopimuksia ei sovelleta oikein ilman asiantuntijatukea.",
+    prob2title:"Modelo 720 — tuntematon velvoite",
+    prob2desc:"Espanjalainen vaatimus ilmoittaa yli 50.000 € ulkomaiset varat. Useimmat eivät tiedä siitä.",
+    prob3title:"IRNR — väärä verolomake",
+    prob3desc:"Monet maksavat kuin ei-asukkaat vaikka ovat tosiasiassa verotuksellisia asukkaita Espanjassa.",
+    prob4title:"Takautuvat seuraukset",
+    prob4desc:"Espanjan veroviranomainen voi tarkastaa viimeiset 4 vuotta. Tuntematon velka kasvaa koroilla.",
+    svcLabel:"Palvelut ja hinnat",
+    svcTitle:'Läpinäkyvä hinnoittelu.<br><em>Ei piilomaksuja.</em>',
+    svcDesc:"Kaikki palvelut toimitetaan 100% verkossa. Lataat asiakirjat portaalin kautta ja me hoidamme kaiken AEAT:lle.",
+    svc1tag:"Perespaketti", svcMonth:"kuukaudessa", svc1name:"IRNR Básico",
+    svc1desc:"Ei-asukkaille, joilla on kiinteistö Espanjassa. Neljännesvuosittaiset ilmoitukset.",
+    svc1f1:"IRNR neljännesvuosi-ilmoitukset (4/v)", svc1f2:"Edustus AEAT:lle",
+    svc1f3:"Sähköpostituki 48h sisällä", svc1f4:"Digitaalinen asiakasportaali",
+    svc2tag:"Suosituin", svcMonth2:"kuukaudessa", svc2name:"Residente Pro",
+    svc2desc:"Palkatuille skandinaaveille. Täysi IRPF ulkomaisilla tuloilla ja verosopimuksilla.",
+    svc2f1:"Vuotuinen IRPF ulkomaisilla tuloilla", svc2f2:"Kaksinkertaisen verotuksen sopimukset",
+    svc2f3:"Modelo 720 (ei muutoksia)", svc2f4:"Rajaton sähköpostituki",
+    svc2f5:"Videokonsultaatio 1×/kvartaali",
+    svc3tag:"Premium", svcMonth3:"kuukaudessa", svc3name:"Internacional Premium",
+    svc3desc:"Monimutkaiset tilanteet: eläkkeet, sijoitukset, oma yritys.",
+    svc3f1:"Kaikki Residente Prossa", svc3f2:"Modelo 720 monimutkainen",
+    svc3f3:"Aktiivinen verosuunnittelu", svc3f4:"Rajoittamattomat videopuhelut",
+    svc3f5:"Vastaus 24h sisällä taattu",
+    howLabel:"Miten se toimii",
+    howTitle:'Neljä askelta <em>selkeään verotilanteeseen</em>',
+    step1title:"Ilmainen veroanalyysi", step1desc:"20 min videotapaaminen. Analysoimme tilanteesi ilmaiseksi.",
+    step2title:"Henkilökohtainen suunnitelma", step2desc:"Räätälöity toimintasuunnitelma selkeillä hinnoilla.", step2badge:"2–3 päivää",
+    step3title:"Hoidamme kaiken", step3desc:"Lataat asiakirjat. Me hoidamme ilmoitukset ja AEAT:n.", step3badge:"Jatkuvasti",
+    step4title:"Selvä ja turvallinen", step4desc:"Tilanteesi on säännelty. Maksat oikeat verot oikeassa maassa.", step4badge:"Tulos",
+    testLabel:"Asiakastarinat",
+    testTitle:'Skandinaavit jotka <em>säästivät tuhansia euroja</em>',
+    test1text:'"Olin maksanut veroja Ruotsissa ja Espanjassa kolme vuotta. NordFiscal korjasi tilanteen kuudessa viikossa ja auttoi minua vaatimaan rahoja takaisin takautuvasti."',
+    test1saved:"Vaati takaisin 4.200 €",
+    test2text:'"En ollut koskaan kuullut Modelo 720:sta. NordFiscal hoiti kaiken etänä, suomeksi, ilman että minun piti matkustaa."',
+    test2saved:"Säännelty ilman sakkoja",
+    test3text:'"Itsenäinen ammatinharjoittaja toiminnalla Suomessa ja Espanjassa. Tilanteeni oli palapeli. He ratkaisivat sen ja nyt nukun hyvin."',
+    test3saved:"Säästyi 3.800 € / vuosi",
+    ctaLabel:"Ilmainen veroanalyysi",
+    ctaTitle:'Aloita <em>20 minuutilla</em><br>jotka voivat muuttaa kaiken',
+    ctaDesc:"Tilanteesi on ainutlaatuinen. Tarjoamme ilmaisen veroanalyysin 20 minuutissa — ilman kuluja ja ilman sitoumuksia.",
+    ctaLangs2:"Vastaamme kielelläsi. Kaikki tapaamiset tapahtuvat videolinkin kautta.",
+    formTitle:"Varaa ilmainen analyysi", formSub:"Arvo 197 € — ilmainen sinulle",
+    fName:"Etunimi", fNamePh:"Mikko", fLast:"Sukunimi", fLastPh:"Virtanen",
+    fEmail:"Sähköpostiosoite", fRegion:"Alue Espanjassa", fRegionPh:"Valitse alueesi...",
+    fRegionOther:"Muu alue",
+    fSit:"Tilanteesi", fSitPh:"Valitse tilanteesi...",
+    fSit1:"Palkattu espanjalaisessa/skandinaavisessa yrityksessä",
+    fSit2:"Eläkeläinen kotimaasta saatavalla eläkkeellä",
+    fSit3:"Itsenäinen ammatinharjoittaja / autónomo",
+    fSit4:"Kiinteistön omistaja ei-asukas",
+    fSit5:"Äskettäin saapunut Espanjaan",
+    fSit6:"Muu tilanne",
+    fSubmit:"Varaa ilmainen veroanalyysi →",
+    fNote:"Ei sitoumuksia · Vastaus 24h sisällä · Kielelläsi",
+    footerDesc:"Veroneuvonta skandinaaveille Espanjassa. Costa Blanca & Costa del Sol.",
+    footerServices:"Palvelut", footerResources:"Resurssit", footerContact:"Yhteystiedot",
+    footerPlanning:"Verosuunnittelu", footerGuide:"Vero-opas 2025",
+    footerDDI:"Kaksinkertainen verotus", footerBlog:"Blogi",
+    footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Varaa videotapaaminen",
+    footerPrivacy:"Tietosuojakäytäntö", footerCookies:"Evästeet",
+  },
+  en: {
+    selectLang:"Select language", navProblem:"The problem", navServices:"Services",
+    navRegions:"Regions", navCta:"Free analysis",
+    navRegionBadge:"Costa Blanca · Costa del Sol",
+    heroEyebrow:"Tax advisory · España",
+    heroTitle:'Are you paying tax <em>in two<br>countries?</em><br>You don\'t<br>have to.',
+    heroSub:"We help Scandinavians in Costa Blanca and Costa del Sol avoid double taxation, comply with Spanish tax obligations, and reclaim incorrectly paid taxes.",
+    heroCta:"Free tax analysis — 20 min", heroGhost:"See services ↓",
+    regionCB:"Costa Blanca", regionCS:"Costa del Sol",
+    pain1tag:"Problem 1", pain1title:"Double taxation on salary",
+    pain1desc:"Employed by a Scandinavian company in Spain — paying tax in both countries without knowing it.",
+    pain2tag:"Problem 2", pain2title:"Modelo 720 not filed",
+    pain2desc:"Foreign assets must be declared in Spain. Failure to file can lead to significant fines.",
+    pain2amount:"Fines from 1,500 €",
+    pain3tag:"Problem 3", pain3title:"Tax resident without knowing it",
+    pain3desc:'The 183-day rule applies, but also "centre of vital interests". Retroactive consequences.',
+    pain3amount:"Resolved in 6 weeks",
+    scrollHint:"Read more below",
+    regLabel:"Our regions",
+    regTitle:'We cover the entire <em>Spanish<br>Mediterranean coast</em>',
+    regDesc:"Whether you live in Torrevieja, Benalmádena, Fuengirola or Marbella — we work 100% online and serve Scandinavians along the entire Mediterranean coast.",
+    rcMain:"Head office", rcNew:"New region", rcAvail:"Available", rcOnline:"100% online",
+    probLabel:"The problem",
+    probTitle:'Most Scandinavians in Spain pay <em>too much tax</em>',
+    probLead:"Spanish tax law is complex — even more so when it interacts with Swedish, Norwegian, Danish or Finnish tax treaties. Most expatriates don't know what to declare, where, or when.",
+    stat1:"Of Scandinavians in Spain have an unclear tax situation",
+    stat2:"Average refund per client with correct handling",
+    stat3:"Tax treaties: Sweden, Norway, Denmark, Finland",
+    stat4:"Regions covered: Costa Blanca and Costa del Sol",
+    prob1title:"Double taxation on salary and pension",
+    prob1desc:"Double taxation conventions exist but are rarely applied correctly without specialist guidance.",
+    prob2title:"Modelo 720 — unknown obligation",
+    prob2desc:"Spanish requirement to declare foreign assets over €50,000. Most people don't know about it.",
+    prob3title:"IRNR — wrong tax form",
+    prob3desc:"Many pay as non-residents when they are actually tax residents in Spain.",
+    prob4title:"Retroactive consequences",
+    prob4desc:"Spanish tax authority can review the last 4 years. Unknown debt grows with interest and penalties.",
+    svcLabel:"Services and pricing",
+    svcTitle:'Transparent pricing.<br><em>No hidden fees.</em>',
+    svcDesc:"All services delivered 100% online. You upload documents via our secure portal and we handle everything with AEAT.",
+    svc1tag:"Basic package", svcMonth:"per month", svc1name:"IRNR Básico",
+    svc1desc:"For non-residents with property in Spain. Quarterly declarations and AEAT communications.",
+    svc1f1:"IRNR quarterly declarations (4/yr)", svc1f2:"Representation with AEAT",
+    svc1f3:"Email support within 48h", svc1f4:"Digital client portal",
+    svc2tag:"Most popular", svcMonth2:"per month", svc2name:"Residente Pro",
+    svc2desc:"For employed Scandinavians in Spain. Full IRPF with foreign income and tax treaty application.",
+    svc2f1:"Annual IRPF with foreign income", svc2f2:"Double taxation treaty application",
+    svc2f3:"Modelo 720 (no changes)", svc2f4:"Unlimited email support",
+    svc2f5:"Video consultation 1×/quarter",
+    svc3tag:"Premium", svcMonth3:"per month", svc3name:"Internacional Premium",
+    svc3desc:"Complex situations: pensions, investments, properties, own business.",
+    svc3f1:"Everything in Residente Pro", svc3f2:"Complex Modelo 720",
+    svc3f3:"Active tax planning", svc3f4:"Unlimited video calls",
+    svc3f5:"Response within 24h guaranteed",
+    howLabel:"How it works",
+    howTitle:'Four steps to a <em>clear tax situation</em>',
+    step1title:"Free tax analysis", step1desc:"20 min video meeting. We analyse your situation at no cost.",
+    step2title:"Personal plan", step2desc:"Tailored action plan with clear pricing. No surprises.", step2badge:"2–3 days",
+    step3title:"We handle everything", step3desc:"You upload documents. We manage declarations and AEAT.", step3badge:"Ongoing",
+    step4title:"Clear and secure", step4desc:"Your situation is resolved. You pay the right tax in the right country.", step4badge:"Result",
+    testLabel:"Client stories",
+    testTitle:'Scandinavians who <em>saved thousands of euros</em>',
+    test1text:'"I had been paying tax in Sweden and Spain for three years. NordFiscal corrected the situation in six weeks and helped me reclaim money retroactively."',
+    test1saved:"Reclaimed 4,200 €",
+    test2text:'"Had never heard of Modelo 720. NordFiscal sorted everything remotely, in English, without me having to travel."',
+    test2saved:"Resolved without fines",
+    test3text:'"Self-employed with activity in Finland and Spain. My situation was a puzzle. They solved it and now I sleep soundly."',
+    test3saved:"Saved 3,800 € / year",
+    ctaLabel:"Free tax analysis",
+    ctaTitle:'Start with <em>20 minutes</em><br>that can change everything',
+    ctaDesc:"Your situation is unique. We offer a free 20-minute tax analysis — at no cost and with no obligation.",
+    ctaLangs2:"We respond in your language. All meetings are via video link.",
+    formTitle:"Book free analysis", formSub:"Worth €197 — free for you",
+    fName:"First name", fNamePh:"Anders", fLast:"Last name", fLastPh:"Hansen",
+    fEmail:"Email address", fRegion:"Region in Spain", fRegionPh:"Select your region...",
+    fRegionOther:"Other region",
+    fSit:"Your situation", fSitPh:"Select your situation...",
+    fSit1:"Employed by Spanish/Scandinavian company",
+    fSit2:"Pensioner with pension from home country",
+    fSit3:"Self-employed / autónomo",
+    fSit4:"Property owner, non-resident",
+    fSit5:"Recently arrived in Spain",
+    fSit6:"Other situation",
+    fSubmit:"Book free tax analysis →",
+    fNote:"No obligation · Reply within 24h · In your language",
+    footerDesc:"Tax advisory for Scandinavians in Spain. Costa Blanca & Costa del Sol.",
+    footerServices:"Services", footerResources:"Resources", footerContact:"Contact",
+    footerPlanning:"Tax planning", footerGuide:"Tax guide 2025",
+    footerDDI:"Double taxation", footerBlog:"Blog",
+    footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Book video meeting",
+    footerPrivacy:"Privacy policy", footerCookies:"Cookies",
+  }
+};
+
+let currentLang = 'sv';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = T[lang];
+  document.documentElement.lang = lang;
+
+  // Update all elements with data-key
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (t[key] !== undefined) {
+      el.innerHTML = t[key];
+    }
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-placeholder-key]').forEach(el => {
+    const key = el.getAttribute('data-placeholder-key');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  // Update lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+
+  // Update html lang
+  document.querySelector('html').setAttribute('lang', lang);
+}
+
+function handleSubmit() {
+  const email = document.querySelector('input[type="email"]').value;
+  const btn = document.querySelector('.btn-submit');
+  if (!email) {
+    document.querySelector('input[type="email"]').style.borderColor = '#c0392b';
+    return;
+  }
+  const thanks = {sv:'Tack! Vi hör av oss inom 24h ✓', no:'Takk! Vi kontakter deg innen 24t ✓',
+    da:'Tak! Vi vender tilbage inden 24t ✓', fi:'Kiitos! Otamme yhteyttä 24h sisällä ✓',
+    en:'Thank you! We\'ll be in touch within 24h ✓'};
+  btn.textContent = thanks[currentLang] || thanks.sv;
+  btn.style.background = '#2d6147';
+  document.querySelectorAll('.form-box input, .form-box select').forEach(i => i.disabled = true);
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, {threshold: 0.08});
+
+document.querySelectorAll('.svc-card,.t-card,.step,.stat-box,.region-card,.problem-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
