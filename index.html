@@ -479,6 +479,62 @@ footer{
 }
 .footer-legal-links a:hover{color:rgba(245,240,232,0.6)}
 
+/* ── GUIDE SECTION ── */
+.guide-section{
+  background:var(--pine);padding:80px 72px;
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+}
+.guide-section .label{
+  font-family:var(--cond);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold2);opacity:0.65;margin-bottom:12px;
+}
+.guide-section h2{
+  font-family:var(--serif);font-size:clamp(26px,3vw,42px);font-weight:700;
+  color:var(--paper);line-height:1.15;margin-bottom:14px;
+}
+.guide-section h2 em{font-style:italic;font-weight:400;color:var(--gold2)}
+.guide-lead{font-size:15px;font-weight:300;color:rgba(245,240,232,0.65);line-height:1.8;margin-bottom:28px;}
+.guide-chapters{list-style:none;margin-bottom:32px}
+.guide-chapter{
+  display:flex;align-items:baseline;gap:10px;
+  padding:7px 0;border-bottom:1px solid rgba(245,240,232,0.07);
+  font-size:13px;color:rgba(245,240,232,0.7);
+}
+.guide-chapter:last-child{border-bottom:none}
+.guide-chapter-num{font-family:var(--cond);font-size:11px;font-weight:700;color:var(--gold2);min-width:22px;}
+.guide-form{
+  background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.12);
+  border-radius:14px;padding:36px;
+}
+.guide-form-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--paper);margin-bottom:4px;}
+.guide-form-sub{font-size:12px;color:rgba(245,240,232,0.4);margin-bottom:24px;line-height:1.6;}
+.guide-mock{
+  background:rgba(245,240,232,0.04);border:1px solid rgba(245,240,232,0.1);
+  border-radius:10px;padding:18px;margin-bottom:20px;
+  display:flex;align-items:center;gap:14px;
+}
+.guide-mock-icon{
+  width:44px;height:58px;background:var(--gold);border-radius:5px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:var(--cond);font-size:9px;font-weight:700;color:var(--pine);
+  letter-spacing:1px;text-align:center;
+}
+.guide-mock-title{font-size:13px;font-weight:600;color:var(--paper);margin-bottom:3px;}
+.guide-mock-meta{font-size:11px;color:rgba(245,240,232,0.4);}
+.guide-langs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+.guide-lang-tag{
+  background:rgba(245,240,232,0.07);border:1px solid rgba(245,240,232,0.12);
+  border-radius:20px;padding:4px 10px;
+  font-family:var(--cond);font-size:10px;letter-spacing:1px;color:rgba(245,240,232,0.55);
+}
+.btn-guide{
+  background:var(--gold);color:var(--pine);border:none;border-radius:var(--r);
+  padding:14px;font-size:14px;font-weight:700;cursor:pointer;
+  font-family:var(--sans);transition:background 0.2s,transform 0.15s;width:100%;
+}
+.btn-guide:hover{background:var(--gold2);transform:translateY(-1px)}
+.guide-note{text-align:center;font-size:10px;color:rgba(245,240,232,0.3);margin-top:10px;}
+
 /* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .hero .eyebrow{animation:fadeUp 0.6s 0.1s both}
@@ -506,6 +562,7 @@ footer{
   .steps{grid-template-columns:1fr 1fr;gap:24px}
   .testimonials-grid{grid-template-columns:1fr}
   .cta-section{grid-template-columns:1fr;gap:36px}
+  .guide-section{grid-template-columns:1fr;padding:64px 24px;gap:36px}
   .region-cards{grid-template-columns:1fr 1fr}
   .footer-top{grid-template-columns:1fr 1fr;gap:28px;padding-bottom:0}
   .footer-bottom{flex-direction:column;align-items:flex-start}
@@ -696,9 +753,9 @@ footer{
   <p class="section-desc" data-key="svcDesc">Alla tjänster levereras 100% online. Du laddar upp dokument säkert via vår portal och vi hanterar allt gentemot AEAT.</p>
   <div class="services-grid">
     <div class="svc-card">
-      <span class="svc-tag" data-key="svc1tag">Grundpaket</span>
-      <div class="svc-price">79€</div>
-      <div class="svc-period" data-key="svcMonth">per månad</div>
+      <span class="svc-tag" data-key="svc1tag">Fastighetsägare</span>
+      <div class="svc-price">99€</div>
+      <div class="svc-period" data-key="svcMonth">per år</div>
       <div class="svc-name" data-key="svc1name">IRNR Básico</div>
       <div class="svc-desc" data-key="svc1desc">För icke-bosatta med fastighet i Spanien. Kvartalsvisa deklarationer och AEAT-kommunikationer.</div>
       <ul class="svc-features">
@@ -710,24 +767,24 @@ footer{
     </div>
     <div class="svc-card featured">
       <span class="svc-tag" data-key="svc2tag">Mest populär</span>
-      <div class="svc-price">129€</div>
-      <div class="svc-period" data-key="svcMonth2">per månad</div>
-      <div class="svc-name" data-key="svc2name">Residente Pro</div>
-      <div class="svc-desc" data-key="svc2desc">För anställda skandinaver i Spanien. Full IRPF med utländska inkomster och tillämpning av skatteavtal.</div>
+      <div class="svc-price">149€</div>
+      <div class="svc-period" data-key="svcMonth2">per år</div>
+      <div class="svc-name" data-key="svc2name">Residente — Undvika dubbelbeskattning</div>
+      <div class="svc-desc" data-key="svc2desc">För anställda skandinaver bosatta i Spanien. IRPF med utländska inkomster — undvika dubbelbeskattning.</div>
       <ul class="svc-features">
         <li data-key="svc2f1">Årlig IRPF med utländska inkomster</li>
-        <li data-key="svc2f2">Tillämpning dubbelbeskattningsavtal</li>
+        <li data-key="svc2f2">Undvika dubbelbeskattning (konvention)</li>
         <li data-key="svc2f3">Modelo 720 (om inga ändringar)</li>
         <li data-key="svc2f4">Obegränsat e-poststöd</li>
         <li data-key="svc2f5">Videokonsultation 1×/kvartal</li>
       </ul>
     </div>
     <div class="svc-card">
-      <span class="svc-tag" data-key="svc3tag">Premium</span>
-      <div class="svc-price">249€</div>
-      <div class="svc-period" data-key="svcMonth3">per månad</div>
-      <div class="svc-name" data-key="svc3name">Internacional Premium</div>
-      <div class="svc-desc" data-key="svc3desc">Komplexa situationer: pensioner, investeringar, fastigheter, eget företag. Proaktiv skatteplanering.</div>
+      <span class="svc-tag" data-key="svc3tag">Komplett</span>
+      <div class="svc-price">229€</div>
+      <div class="svc-period" data-key="svcMonth3">per år</div>
+      <div class="svc-name" data-key="svc3name">Residente + Modelo 720</div>
+      <div class="svc-desc" data-key="svc3desc">IRPF + undvika dubbelbeskattning + Modelo 720 (utan ändringar). Allt i ett.</div>
       <ul class="svc-features">
         <li data-key="svc3f1">Allt i Residente Pro</li>
         <li data-key="svc3f2">Modelo 720 komplex</li>
@@ -811,6 +868,66 @@ footer{
     </div>
   </div>
 </section>
+
+<!-- GUIDE -->
+<section class="guide-section" id="guia">
+  <div>
+    <div class="label" data-key="guideLabel">Gratis guide</div>
+    <h2 data-key="guideTitle">Skatteguide för<br>skandinaver i <em>Spanien 2025</em></h2>
+    <p class="guide-lead" data-key="guideLead">
+      Allt du behöver veta om skatt, undvika dubbelbeskattning, Modelo 720 och dina skyldigheter i Spanien — på ditt språk, utan juridisk jargong.
+    </p>
+    <ul class="guide-chapters">
+      <li class="guide-chapter"><span class="guide-chapter-num">01</span><span data-key="gc1">Är du skattemässigt bosatt i Spanien?</span></li>
+      <li class="guide-chapter"><span class="guide-chapter-num">02</span><span data-key="gc2">Undvika dubbelbeskattning — så fungerar det</span></li>
+      <li class="guide-chapter"><span class="guide-chapter-num">03</span><span data-key="gc3">Modelo 720 — obligatorisk deklaration</span></li>
+      <li class="guide-chapter"><span class="guide-chapter-num">04</span><span data-key="gc4">IRPF — inkomstskatt för bosatta</span></li>
+      <li class="guide-chapter"><span class="guide-chapter-num">05</span><span data-key="gc5">IRNR — skatt för icke-bosatta</span></li>
+      <li class="guide-chapter"><span class="guide-chapter-num">06</span><span data-key="gc6">Pensioner — hur beskattas din nordiska pension?</span></li>
+      <li class="guide-chapter"><span class="guide-chapter-num">07</span><span data-key="gc7">NIE, TIE och digital registrering</span></li>
+      <li class="guide-chapter"><span class="guide-chapter-num">08</span><span data-key="gc8">Vanligaste misstagen och hur du undviker dem</span></li>
+    </ul>
+  </div>
+  <div class="guide-form">
+    <div class="guide-mock">
+      <div class="guide-mock-icon">PDF<br>2025</div>
+      <div>
+        <div class="guide-mock-title" data-key="guideMockTitle">Skatteguide 2025</div>
+        <div class="guide-mock-meta" data-key="guideMockMeta">PDF · 24 sidor · Gratis</div>
+      </div>
+    </div>
+    <div class="guide-form-title" data-key="guideFormTitle">Ladda ner gratis</div>
+    <div class="guide-form-sub" data-key="guideFormSub">Fyll i din e-post. Vi skickar guiden direkt — ingen spam, bara skattekunskap.</div>
+    <div class="guide-langs">
+      <span class="guide-lang-tag">🇸🇪 Svenska</span>
+      <span class="guide-lang-tag">🇳🇴 Norsk</span>
+      <span class="guide-lang-tag">🇩🇰 Dansk</span>
+      <span class="guide-lang-tag">🇫🇮 Suomi</span>
+      <span class="guide-lang-tag">🇬🇧 English</span>
+    </div>
+    <div class="form-group">
+      <label data-key="guideName">Namn</label>
+      <input type="text" data-placeholder-key="guideNamePh">
+    </div>
+    <div class="form-group">
+      <label data-key="guideEmail">E-postadress</label>
+      <input type="email" id="guideEmailInput" placeholder="namn@email.se">
+    </div>
+    <div class="form-group">
+      <label data-key="guideLang">Vilket språk vill du ha guiden på?</label>
+      <select id="guideLangSelect">
+        <option value="sv">🇸🇪 Svenska</option>
+        <option value="no">🇳🇴 Norsk</option>
+        <option value="da">🇩🇰 Dansk</option>
+        <option value="fi">🇫🇮 Suomi</option>
+        <option value="en">🇬🇧 English</option>
+      </select>
+    </div>
+    <button class="btn-guide" onclick="handleGuide()" data-key="guideCta">Skicka mig guiden gratis →</button>
+    <div class="guide-note" data-key="guideNote">Ingen spam · Avregistrera när som helst · Levereras inom 2 minuter</div>
+  </div>
+</section>
+
 
 <!-- CTA -->
 <section class="cta-section" id="contacto">
@@ -903,7 +1020,7 @@ footer{
     <div class="footer-col">
       <h4 data-key="footerContact">Kontakt</h4>
       <ul>
-        <li><a href="#">hola@nordfiscal.es</a></li>
+        <li><a href="#"><span class="__cf_email__" data-cfemail="3f5750535e7f51504d5b59564c5c5e53115a4c">[email&#160;protected]</span></a></li>
         <li><a href="#">+34 965 XX XX XX</a></li>
         <li><a href="#" data-key="footerCB">Costa Blanca</a></li>
         <li><a href="#" data-key="footerCS">Costa del Sol</a></li>
@@ -921,7 +1038,7 @@ footer{
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── TRANSLATIONS ──
 const T = {
   sv: {
@@ -964,17 +1081,17 @@ const T = {
     svcLabel:"Tjänster och priser",
     svcTitle:'Transparent prissättning.<br><em>Inga dolda avgifter.</em>',
     svcDesc:"Alla tjänster levereras 100% online. Du laddar upp dokument via vår portal och vi hanterar allt gentemot AEAT.",
-    svc1tag:"Grundpaket", svcMonth:"per månad", svc1name:"IRNR Básico",
-    svc1desc:"För icke-bosatta med fastighet i Spanien. Kvartalsvisa deklarationer.",
+    svc1tag:"Fastighetsägare", svcMonth:"per år", svc1name:"IRNR Básico",
+    svc1desc:"För icke-bosatta med fastighet i Spanien. 4 kvartalsvisa deklarationer/år + representación.",
     svc1f1:"IRNR kvartalsdeklarationer (4/år)", svc1f2:"Representación mot AEAT",
     svc1f3:"E-poststöd inom 48h", svc1f4:"Digitalt klientportal",
-    svc2tag:"Mest populär", svcMonth2:"per månad", svc2name:"Residente Pro",
-    svc2desc:"För anställda skandinaver. Full IRPF med utländska inkomster och skatteavtal.",
-    svc2f1:"Årlig IRPF med utländska inkomster", svc2f2:"Dubbelbeskattningsavtal",
+    svc2tag:"Mest populär", svcMonth2:"per år", svc2name:"Residente — Undvika dubbelbeskattning",
+    svc2desc:"IRPF med utländska inkomster. Undvika dubbelbeskattning mellan Spanien och ditt hemland.",
+    svc2f1:"Årlig IRPF med utländska inkomster", svc2f2:"Undvika dubbelbeskattning",
     svc2f3:"Modelo 720 (inga ändringar)", svc2f4:"Obegränsat e-poststöd",
     svc2f5:"Videokonsultation 1×/kvartal",
-    svc3tag:"Premium", svcMonth3:"per månad", svc3name:"Internacional Premium",
-    svc3desc:"Komplexa situationer: pensioner, investeringar, eget företag.",
+    svc3tag:"Komplett", svcMonth3:"per år", svc3name:"Residente + Modelo 720",
+    svc3desc:"IRPF + undvika dubbelbeskattning + Modelo 720 (utan ändringar). Allt i ett.",
     svc3f1:"Allt i Residente Pro", svc3f2:"Modelo 720 komplex",
     svc3f3:"Aktiv skatteplanering", svc3f4:"Obegränsade videosamtal",
     svc3f5:"Svar inom 24h garanterat",
@@ -1014,6 +1131,28 @@ const T = {
     footerPlanning:"Skatteplanering", footerGuide:"Skatteguide 2025",
     footerDDI:"Dubbelbeskattning", footerBlog:"Blogg",
     footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Boka videomöte",
+    
+    guideLabel:'Gratis guide',
+    guideTitle:'Skatteguide för<br>skandinaver i <em>Spanien 2025</em>',
+    guideLead:'Allt du behöver veta om skatt, undvika dubbelbeskattning, Modelo 720 och dina skyldigheter — på svenska.',
+    gc1:'Är du skattemässigt bosatt i Spanien?',
+    gc2:'Undvika dubbelbeskattning — så fungerar det',
+    gc3:'Modelo 720 — obligatorisk deklaration av utländska tillgångar',
+    gc4:'IRPF — inkomstskatt för bosatta',
+    gc5:'IRNR — skatt för icke-bosatta med fastighet',
+    gc6:'Pensioner — hur beskattas din nordiska pension?',
+    gc7:'NIE, TIE och digital registrering',
+    gc8:'Vanligaste misstagen och hur du undviker dem',
+    guideMockTitle:'Skatteguide 2025',
+    guideMockMeta:'PDF · 24 sidor · Gratis',
+    guideFormTitle:'Ladda ner gratis',
+    guideFormSub:'Fyll i din e-post. Vi skickar guiden direkt — ingen spam.',
+    guideName:'Namn',
+    guideNamePh:'Anders',
+    guideEmail:'E-postadress',
+    guideLang:'Vilket språk vill du ha guiden på?',
+    guideCta:'Skicka mig guiden gratis →',
+    guideNote:'Ingen spam · Avregistrera när som helst · Levereras inom 2 minuter',
     footerPrivacy:"Integritetspolicy", footerCookies:"Cookies",
   },
   no: {
@@ -1056,17 +1195,17 @@ const T = {
     svcLabel:"Tjenester og priser",
     svcTitle:'Transparent prissetting.<br><em>Ingen skjulte avgifter.</em>',
     svcDesc:"Alle tjenester leveres 100% online. Du laster opp dokumenter via vår portal og vi håndterer alt mot AEAT.",
-    svc1tag:"Grunnpakke", svcMonth:"per måned", svc1name:"IRNR Básico",
-    svc1desc:"For ikke-bosatte med eiendom i Spania. Kvartalsvise deklarasjoner.",
+    svc1tag:"Eiendomseier", svcMonth:"per år", svc1name:"IRNR Básico",
+    svc1desc:"For ikke-bosatte med eiendom i Spania. 4 kvartalsvise deklarasjoner/år + representación.",
     svc1f1:"IRNR kvartalsdeklarasjoner (4/år)", svc1f2:"Representación mot AEAT",
     svc1f3:"E-poststøtte innen 48t", svc1f4:"Digitalt klientportal",
-    svc2tag:"Mest populær", svcMonth2:"per måned", svc2name:"Residente Pro",
-    svc2desc:"For ansatte skandinaver. Full IRPF med utenlandske inntekter og skatteavtaler.",
-    svc2f1:"Årlig IRPF med utenlandske inntekter", svc2f2:"Dobbeltbeskatningsavtaler",
+    svc2tag:"Mest populær", svcMonth2:"per år", svc2name:"Residente — Unngå dobbeltbeskatning",
+    svc2desc:"IRPF med utenlandske inntekter. Unngå dobbeltbeskatning mellom Spania og hjemlandet.",
+    svc2f1:"Årlig IRPF med utenlandske inntekter", svc2f2:"Unngå dobbeltbeskatning",
     svc2f3:"Modelo 720 (ingen endringer)", svc2f4:"Ubegrenset e-poststøtte",
     svc2f5:"Videokonsultasjon 1×/kvartal",
-    svc3tag:"Premium", svcMonth3:"per måned", svc3name:"Internacional Premium",
-    svc3desc:"Komplekse situasjoner: pensjoner, investeringer, eget selskap.",
+    svc3tag:"Komplett", svcMonth3:"per år", svc3name:"Residente + Modelo 720",
+    svc3desc:"IRPF + unngå dobbeltbeskatning + Modelo 720 (ingen endringer). Alt i ett.",
     svc3f1:"Alt i Residente Pro", svc3f2:"Modelo 720 kompleks",
     svc3f3:"Aktiv skatteplanlegging", svc3f4:"Ubegrenset videosamtaler",
     svc3f5:"Svar innen 24t garantert",
@@ -1106,6 +1245,28 @@ const T = {
     footerPlanning:"Skatteplanlegging", footerGuide:"Skatteguide 2025",
     footerDDI:"Dobbeltbeskatning", footerBlog:"Blogg",
     footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Book videomøte",
+    
+    guideLabel:'Gratis guide',
+    guideTitle:'Skatteguide for<br>skandinaver i <em>Spania 2025</em>',
+    guideLead:'Alt du trenger å vite om skatt, unngå dobbeltbeskatning, Modelo 720 og dine forpliktelser — på norsk.',
+    gc1:'Er du skattemessig bosatt i Spania?',
+    gc2:'Unngå dobbeltbeskatning — slik fungerer det',
+    gc3:'Modelo 720 — obligatorisk deklarasjon av utenlandske eiendeler',
+    gc4:'IRPF — inntektsskatt for bosatte',
+    gc5:'IRNR — skatt for ikke-bosatte med eiendom',
+    gc6:'Pensjoner — hvordan beskattes din nordiske pensjon?',
+    gc7:'NIE, TIE og digital registrering',
+    gc8:'Vanligste feil og hvordan du unngår dem',
+    guideMockTitle:'Skatteguide 2025',
+    guideMockMeta:'PDF · 24 sider · Gratis',
+    guideFormTitle:'Last ned gratis',
+    guideFormSub:'Fyll inn e-posten din. Vi sender guiden umiddelbart — ingen spam.',
+    guideName:'Navn',
+    guideNamePh:'Anders',
+    guideEmail:'E-postadresse',
+    guideLang:'Hvilket språk vil du ha guiden på?',
+    guideCta:'Send meg guiden gratis →',
+    guideNote:'Ingen spam · Avslutt når som helst · Leveres innen 2 minutter',
     footerPrivacy:"Personvernpolicy", footerCookies:"Informasjonskapsler",
   },
   da: {
@@ -1148,17 +1309,17 @@ const T = {
     svcLabel:"Tjenester og priser",
     svcTitle:'Transparent prissætning.<br><em>Ingen skjulte gebyrer.</em>',
     svcDesc:"Alle tjenester leveres 100% online. Du uploader dokumenter via vores portal, og vi håndterer alt over for AEAT.",
-    svc1tag:"Grundpakke", svcMonth:"pr. måned", svc1name:"IRNR Básico",
-    svc1desc:"For ikke-hjemmehørende med ejendom i Spanien. Kvartalsvise deklarationer.",
+    svc1tag:"Ejendomsejer", svcMonth:"pr. år", svc1name:"IRNR Básico",
+    svc1desc:"For ikke-hjemmehørende med ejendom i Spanien. 4 kvartalsvise deklarationer/år + representación.",
     svc1f1:"IRNR kvartalsdeklarationer (4/år)", svc1f2:"Representación over for AEAT",
     svc1f3:"E-mailsupport inden 48t", svc1f4:"Digitalt klientportal",
-    svc2tag:"Mest populær", svcMonth2:"pr. måned", svc2name:"Residente Pro",
-    svc2desc:"For ansatte skandinaver. Fuld IRPF med udenlandske indkomster og skatteaftaler.",
-    svc2f1:"Årlig IRPF med udenlandske indkomster", svc2f2:"Dobbeltbeskatningsaftaler",
+    svc2tag:"Mest populær", svcMonth2:"pr. år", svc2name:"Residente — Undgå dobbeltbeskatning",
+    svc2desc:"IRPF med udenlandske indkomster. Undgå dobbeltbeskatning mellem Spanien og hjemlandet.",
+    svc2f1:"Årlig IRPF med udenlandske indkomster", svc2f2:"Undgå dobbeltbeskatning",
     svc2f3:"Modelo 720 (ingen ændringer)", svc2f4:"Ubegrænset e-mailsupport",
     svc2f5:"Videokonsultation 1×/kvartal",
-    svc3tag:"Premium", svcMonth3:"pr. måned", svc3name:"Internacional Premium",
-    svc3desc:"Komplekse situationer: pensioner, investeringer, eget firma.",
+    svc3tag:"Komplet", svcMonth3:"pr. år", svc3name:"Residente + Modelo 720",
+    svc3desc:"IRPF + undgå dobbeltbeskatning + Modelo 720 (ingen ændringer). Alt i ét.",
     svc3f1:"Alt i Residente Pro", svc3f2:"Modelo 720 kompleks",
     svc3f3:"Aktiv skatteplanlægning", svc3f4:"Ubegrænsede videoopkald",
     svc3f5:"Svar inden 24t garanteret",
@@ -1198,6 +1359,28 @@ const T = {
     footerPlanning:"Skatteplanlægning", footerGuide:"Skatteguide 2025",
     footerDDI:"Dobbeltbeskatning", footerBlog:"Blog",
     footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Book videomøde",
+    
+    guideLabel:'Gratis guide',
+    guideTitle:'Skatteguide for<br>skandinaver i <em>Spanien 2025</em>',
+    guideLead:'Alt hvad du behøver at vide om skat, undgå dobbeltbeskatning, Modelo 720 og dine forpligtelser — på dansk.',
+    gc1:'Er du skattemæssigt hjemmehørende i Spanien?',
+    gc2:'Undgå dobbeltbeskatning — sådan fungerer det',
+    gc3:'Modelo 720 — obligatorisk deklaration af udenlandske aktiver',
+    gc4:'IRPF — indkomstskat for hjemmehørende',
+    gc5:'IRNR — skat for ikke-hjemmehørende med ejendom',
+    gc6:'Pensioner — hvordan beskattes din nordiske pension?',
+    gc7:'NIE, TIE og digital registrering',
+    gc8:'Hyppigste fejl og hvordan du undgår dem',
+    guideMockTitle:'Skatteguide 2025',
+    guideMockMeta:'PDF · 24 sider · Gratis',
+    guideFormTitle:'Download gratis',
+    guideFormSub:'Udfyld din e-mail. Vi sender guiden med det samme — ingen spam.',
+    guideName:'Navn',
+    guideNamePh:'Anders',
+    guideEmail:'E-mailadresse',
+    guideLang:'Hvilket sprog vil du have guiden på?',
+    guideCta:'Send mig guiden gratis →',
+    guideNote:'Ingen spam · Afmeld når som helst · Leveres inden 2 minutter',
     footerPrivacy:"Privatlivspolitik", footerCookies:"Cookies",
   },
   fi: {
@@ -1240,17 +1423,17 @@ const T = {
     svcLabel:"Palvelut ja hinnat",
     svcTitle:'Läpinäkyvä hinnoittelu.<br><em>Ei piilomaksuja.</em>',
     svcDesc:"Kaikki palvelut toimitetaan 100% verkossa. Lataat asiakirjat portaalin kautta ja me hoidamme kaiken AEAT:lle.",
-    svc1tag:"Perespaketti", svcMonth:"kuukaudessa", svc1name:"IRNR Básico",
-    svc1desc:"Ei-asukkaille, joilla on kiinteistö Espanjassa. Neljännesvuosittaiset ilmoitukset.",
+    svc1tag:"Kiinteistönomistaja", svcMonth:"vuodessa", svc1name:"IRNR Básico",
+    svc1desc:"Ei-asukkaille, joilla on kiinteistö Espanjassa. 4 neljännesvuosi-ilmoitusta/vuosi + edustus.",
     svc1f1:"IRNR neljännesvuosi-ilmoitukset (4/v)", svc1f2:"Edustus AEAT:lle",
     svc1f3:"Sähköpostituki 48h sisällä", svc1f4:"Digitaalinen asiakasportaali",
-    svc2tag:"Suosituin", svcMonth2:"kuukaudessa", svc2name:"Residente Pro",
-    svc2desc:"Palkatuille skandinaaveille. Täysi IRPF ulkomaisilla tuloilla ja verosopimuksilla.",
-    svc2f1:"Vuotuinen IRPF ulkomaisilla tuloilla", svc2f2:"Kaksinkertaisen verotuksen sopimukset",
+    svc2tag:"Suosituin", svcMonth2:"vuodessa", svc2name:"Residente — Välttää kaksinkertainen verotus",
+    svc2desc:"IRPF ulkomaisilla tuloilla. Välttää kaksinkertainen verotus Espanjan ja kotimaasi välillä.",
+    svc2f1:"Vuotuinen IRPF ulkomaisilla tuloilla", svc2f2:"Välttää kaksinkertainen verotus",
     svc2f3:"Modelo 720 (ei muutoksia)", svc2f4:"Rajaton sähköpostituki",
     svc2f5:"Videokonsultaatio 1×/kvartaali",
-    svc3tag:"Premium", svcMonth3:"kuukaudessa", svc3name:"Internacional Premium",
-    svc3desc:"Monimutkaiset tilanteet: eläkkeet, sijoitukset, oma yritys.",
+    svc3tag:"Täydellinen", svcMonth3:"vuodessa", svc3name:"Residente + Modelo 720",
+    svc3desc:"IRPF + välttää kaksinkertainen verotus + Modelo 720 (ei muutoksia). Kaikki yhdessä.",
     svc3f1:"Kaikki Residente Prossa", svc3f2:"Modelo 720 monimutkainen",
     svc3f3:"Aktiivinen verosuunnittelu", svc3f4:"Rajoittamattomat videopuhelut",
     svc3f5:"Vastaus 24h sisällä taattu",
@@ -1290,6 +1473,28 @@ const T = {
     footerPlanning:"Verosuunnittelu", footerGuide:"Vero-opas 2025",
     footerDDI:"Kaksinkertainen verotus", footerBlog:"Blogi",
     footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Varaa videotapaaminen",
+    
+    guideLabel:'Ilmainen opas',
+    guideTitle:'Vero-opas<br>skandinaaveille <em>Espanjassa 2025</em>',
+    guideLead:'Kaikki mitä sinun täytyy tietää veroista, kaksinkertaisen verotuksen välttämisestä, Modelo 720:sta ja velvoitteistasi — suomeksi.',
+    gc1:'Oletko verotuksellisesti asukas Espanjassa?',
+    gc2:'Välttää kaksinkertainen verotus — näin se toimii',
+    gc3:'Modelo 720 — pakollinen ulkomaisten varojen ilmoitus',
+    gc4:'IRPF — tulovero asukkaille',
+    gc5:'IRNR — vero ei-asukkaille, joilla on kiinteistö',
+    gc6:'Eläkkeet — miten pohjoismaisesta eläkkeestäsi verotetaan?',
+    gc7:'NIE, TIE ja digitaalinen rekisteröinti',
+    gc8:'Yleisimmät virheet ja kuinka välttää ne',
+    guideMockTitle:'Vero-opas 2025',
+    guideMockMeta:'PDF · 24 sivua · Ilmainen',
+    guideFormTitle:'Lataa ilmaiseksi',
+    guideFormSub:'Syötä sähköpostisi. Lähetämme oppaan heti — ei roskapostia.',
+    guideName:'Nimi',
+    guideNamePh:'Mikko',
+    guideEmail:'Sähköpostiosoite',
+    guideLang:'Millä kielellä haluat oppaan?',
+    guideCta:'Lähetä minulle opas ilmaiseksi →',
+    guideNote:'Ei roskapostia · Peruuta milloin tahansa · Toimitetaan 2 minuutissa',
     footerPrivacy:"Tietosuojakäytäntö", footerCookies:"Evästeet",
   },
   en: {
@@ -1332,16 +1537,16 @@ const T = {
     svcLabel:"Services and pricing",
     svcTitle:'Transparent pricing.<br><em>No hidden fees.</em>',
     svcDesc:"All services delivered 100% online. You upload documents via our secure portal and we handle everything with AEAT.",
-    svc1tag:"Basic package", svcMonth:"per month", svc1name:"IRNR Básico",
-    svc1desc:"For non-residents with property in Spain. Quarterly declarations and AEAT communications.",
+    svc1tag:"Property owner", svcMonth:"per year", svc1name:"IRNR Básico",
+    svc1desc:"For non-residents with property in Spain. 4 quarterly declarations/year + AEAT representation.",
     svc1f1:"IRNR quarterly declarations (4/yr)", svc1f2:"Representation with AEAT",
     svc1f3:"Email support within 48h", svc1f4:"Digital client portal",
-    svc2tag:"Most popular", svcMonth2:"per month", svc2name:"Residente Pro",
-    svc2desc:"For employed Scandinavians in Spain. Full IRPF with foreign income and tax treaty application.",
-    svc2f1:"Annual IRPF with foreign income", svc2f2:"Double taxation treaty application",
+    svc2tag:"Most popular", svcMonth2:"per year", svc2name:"Resident — Avoid double taxation",
+    svc2desc:"IRPF with foreign income. Avoid double taxation between Spain and your home country.",
+    svc2f1:"Annual IRPF with foreign income", svc2f2:"Avoid double taxation",
     svc2f3:"Modelo 720 (no changes)", svc2f4:"Unlimited email support",
     svc2f5:"Video consultation 1×/quarter",
-    svc3tag:"Premium", svcMonth3:"per month", svc3name:"Internacional Premium",
+    svc3tag:"Complete service", svcMonth3:"per year", svc3name:"Internacional Premium",
     svc3desc:"Complex situations: pensions, investments, properties, own business.",
     svc3f1:"Everything in Residente Pro", svc3f2:"Complex Modelo 720",
     svc3f3:"Active tax planning", svc3f4:"Unlimited video calls",
@@ -1382,6 +1587,28 @@ const T = {
     footerPlanning:"Tax planning", footerGuide:"Tax guide 2025",
     footerDDI:"Double taxation", footerBlog:"Blog",
     footerCB:"Costa Blanca", footerCS:"Costa del Sol", footerBook:"Book video meeting",
+    
+    guideLabel:'Free guide',
+    guideTitle:'Tax guide for<br>Scandinavians in <em>Spain 2025</em>',
+    guideLead:'Everything you need to know about taxes, avoiding double taxation, Modelo 720 and your obligations in Spain — in your language.',
+    gc1:'Are you tax resident in Spain?',
+    gc2:'Avoid double taxation — how it works',
+    gc3:'Modelo 720 — mandatory declaration of foreign assets',
+    gc4:'IRPF — income tax for residents',
+    gc5:'IRNR — tax for non-residents with property',
+    gc6:'Pensions — how is your Nordic pension taxed?',
+    gc7:'NIE, TIE and digital registration',
+    gc8:'Most common mistakes and how to avoid them',
+    guideMockTitle:'Tax Guide 2025',
+    guideMockMeta:'PDF · 24 pages · Free',
+    guideFormTitle:'Download free',
+    guideFormSub:"Enter your email. We'll send the guide immediately — no spam.",
+    guideName:'Name',
+    guideNamePh:'Anders',
+    guideEmail:'Email address',
+    guideLang:'Which language do you want the guide in?',
+    guideCta:'Send me the guide for free →',
+    guideNote:'No spam · Unsubscribe anytime · Delivered within 2 minutes',
     footerPrivacy:"Privacy policy", footerCookies:"Cookies",
   }
 };
@@ -1449,12 +1676,4 @@ const obs = new IntersectionObserver(entries => {
   });
 }, {threshold: 0.08});
 
-document.querySelectorAll('.svc-card,.t-card,.step,.stat-box,.region-card,.problem-item').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(18px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  obs.observe(el);
-});
-</script>
-</body>
-</html>
+document.querySelectorAll('.svc-card,.t-card,.step,.stat-box,.region-card,.problem-item').
