@@ -641,7 +641,7 @@ footer{
       <span class="tag" data-key="pain1tag">Problem 1</span>
       <h3 data-key="pain1title">Dubbelbeskattning av lönen</h3>
       <p data-key="pain1desc">Anställd hos ett skandinaviskt företag i Spanien — betalar skatt i båda länderna utan att veta om det.</p>
-      <span class="amount">↑ 2.800–6.000 € / år</span>
+      <span class="amount" data-key="pain1amount">↑ 2.800–6.000 € / år</span>
     </div>
     <div class="pain-card">
       <span class="tag" data-key="pain2tag">Problem 2</span>
@@ -1004,10 +1004,9 @@ footer{
     <div class="footer-col">
       <h4 data-key="footerServices">Tjänster</h4>
       <ul>
-        <li><a href="#">IRNR Básico</a></li>
-        <li><a href="#">Residente Pro</a></li>
-        <li><a href="#">Internacional Premium</a></li>
-        <li><a href="#">Modelo 720</a></li>
+        <li><a href="#">Essential</a></li>
+        <li><a href="#">Standard</a></li>
+        <li><a href="#">PRO</a></li>
         <li><a href="#" data-key="footerPlanning">Skatteplanering</a></li>
       </ul>
     </div>
@@ -1056,6 +1055,7 @@ const T = {
     regionCB:"Costa Blanca", regionCS:"Costa del Sol",
     pain1tag:"Problem 1", pain1title:"Dubbelbeskattning av lönen",
     pain1desc:"Anställd hos ett skandinaviskt företag i Spanien — betalar skatt i båda länderna utan att veta om det.",
+    pain1amount:"↑ 2.800–6.000 € / år",
     pain2tag:"Problem 2", pain2title:"Modelo 720 inte deklarerat",
     pain2desc:"Tillgångar utomlands måste deklareras i Spanien. Utebliven deklaration kan leda till kännbara böter.",
     pain2amount:"Böter från 1.500 €",
@@ -1169,6 +1169,7 @@ const T = {
     regionCB:"Costa Blanca", regionCS:"Costa del Sol",
     pain1tag:"Problem 1", pain1title:"Dobbeltbeskatning av lønn",
     pain1desc:"Ansatt i et skandinavisk selskap i Spania — betaler skatt i begge land uten å vite om det.",
+    pain1amount:"↑ 2.800–6.000 € / år",
     pain2tag:"Problem 2", pain2title:"Modelo 720 ikke deklarert",
     pain2desc:"Utenlandske eiendeler må deklareres i Spania. Manglende deklarasjon kan føre til store bøter.",
     pain2amount:"Bøter fra 1.500 €",
@@ -1282,6 +1283,7 @@ const T = {
     regionCB:"Costa Blanca", regionCS:"Costa del Sol",
     pain1tag:"Problem 1", pain1title:"Dobbeltbeskatning af løn",
     pain1desc:"Ansat i et skandinavisk firma i Spanien — betaler skat i begge lande uden at vide det.",
+    pain1amount:"↑ 2.800–6.000 € / år",
     pain2tag:"Problem 2", pain2title:"Modelo 720 ikke deklareret",
     pain2desc:"Udenlandske aktiver skal deklareres i Spanien. Manglende deklaration kan føre til store bøder.",
     pain2amount:"Bøder fra 1.500 €",
@@ -1395,6 +1397,7 @@ const T = {
     regionCB:"Costa Blanca", regionCS:"Costa del Sol",
     pain1tag:"Ongelma 1", pain1title:"Palkan kaksinkertainen verotus",
     pain1desc:"Skandinaavisen yrityksen palveluksessa Espanjassa — maksaa veroja molemmissa maissa tietämättään.",
+    pain1amount:"↑ 2.800–6.000 € / vuosi",
     pain2tag:"Ongelma 2", pain2title:"Modelo 720 ilmoittamatta",
     pain2desc:"Ulkomaiset varat on ilmoitettava Espanjassa. Ilmoittamatta jättäminen voi johtaa tuntuviin sakkoihin.",
     pain2amount:"Sakot alkaen 1.500 €",
@@ -1508,6 +1511,7 @@ const T = {
     regionCB:"Costa Blanca", regionCS:"Costa del Sol",
     pain1tag:"Problem 1", pain1title:"Double taxation on salary",
     pain1desc:"Employed by a Scandinavian company in Spain — paying tax in both countries without knowing it.",
+    pain1amount:"↑ 2.800–6.000 € / year",
     pain2tag:"Problem 2", pain2title:"Modelo 720 not filed",
     pain2desc:"Foreign assets must be declared in Spain. Failure to file can lead to significant fines.",
     pain2amount:"Fines from 1,500 €",
@@ -1621,6 +1625,7 @@ const T = {
     regionCB:"Costa Blanca", regionCS:"Costa del Sol",
     pain1tag:"Problema 1", pain1title:"Doble imposición sobre el salario",
     pain1desc:"Empleado en empresa escandinava en España — paga impuestos en ambos países sin saberlo.",
+    pain1amount:"↑ 2.800–6.000 € / año",
     pain2tag:"Problema 2", pain2title:"Modelo 720 sin presentar",
     pain2desc:"Los activos en el extranjero deben declararse en España. No hacerlo puede conllevar sanciones.",
     pain2amount:"Sanciones desde 1.500 €",
@@ -1829,5 +1834,14 @@ document.querySelectorAll('.svc-card,.t-card,.step,.stat-box,.region-card,.probl
   obs.observe(el);
 });
 </script>
+
+<!-- Scripts -->
+<script>
+  window.formMessages = {
+    wait: 'Please wait…',
+    error: 'Something went wrong!',
+  };
+</script>
+<script src="assets/js/formredir.js"></script>
 </body>
 </html>
