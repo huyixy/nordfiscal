@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NordFiscal &#8212; NordFiscal · Pro</title>
+<meta name="description" content="For Scandinavians with pensions, investments, Modelo 720, or self-employed activity in Spain. Everything in Standard, plus Modelo 720 every year, active tax planning and 24-hour guaranteed response.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&amp;family=Barlow:wght@300;400;500;600&amp;family=Barlow+Condensed:wght@500;700&amp;display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pine:#1a3d2b;--pine2:#2d6147;--pine3:#4a8f6a;
+  --gold:#c8962a;--gold2:#e8b84b;
+  --paper:#f5f0e8;--paper2:#ede8da;--paper3:#e0d9cc;
+  --ink:#0e1a0f;--muted:#6b7c6e;--light:#d4e8dc;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Barlow',sans-serif;
+  --cond:'Barlow Condensed',sans-serif;
+  --r:6px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:64px;
+  background:rgba(245,240,232,0.96);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(14,26,15,0.07);}
+.nav-logo{font-family:var(--serif);font-size:20px;font-weight:900;color:var(--pine);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:var(--cond);font-size:11px;font-weight:500;letter-spacing:0.5px;
+  text-transform:uppercase;color:var(--ink);text-decoration:none;opacity:0.65;transition:opacity 0.2s}
+.nav-links a:hover{opacity:1}
+.nav-cta{background:var(--pine)!important;color:var(--paper)!important;
+  padding:9px 18px;border-radius:var(--r);opacity:1!important}
+.lang-buttons{display:flex;gap:4px}
+.lang-btn{background:transparent;border:1px solid rgba(14,26,15,0.18);
+  color:rgba(14,26,15,0.5);font-family:var(--cond);font-size:10px;
+  font-weight:500;letter-spacing:1px;padding:4px 9px;border-radius:3px;
+  cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:4px}
+.lang-btn:hover{border-color:var(--pine);color:var(--pine)}
+.lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:700}
+.page-hero{padding:110px 72px 72px;background:var(--pine);position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 80% at 80% 50%,rgba(200,150,42,0.12) 0%,transparent 60%);
+  pointer-events:none;}
+.hero-label{font-family:var(--cond);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold2);opacity:0.7;margin-bottom:12px}
+.hero-price-tag{display:inline-flex;align-items:baseline;gap:6px;
+  background:rgba(245,240,232,0.08);border:1px solid rgba(245,240,232,0.15);
+  border-radius:8px;padding:10px 18px;margin-bottom:20px;}
+.hero-price{font-family:var(--serif);font-size:42px;font-weight:900;color:var(--gold2);line-height:1}
+.hero-period{font-family:var(--cond);font-size:13px;color:rgba(245,240,232,0.5);letter-spacing:1px}
+.page-hero h1{font-family:var(--serif);font-size:clamp(34px,5vw,60px);font-weight:900;
+  line-height:1.05;color:var(--paper);letter-spacing:-1px;margin-bottom:16px}
+.page-hero h1 em{font-style:italic;font-weight:400;color:var(--gold2)}
+.hero-sub{font-size:16px;font-weight:300;color:rgba(245,240,232,0.7);
+  line-height:1.8;max-width:580px;margin-bottom:32px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--pine);padding:14px 28px;
+  border-radius:var(--r);font-size:14px;font-weight:700;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;transition:background 0.2s,transform 0.15s;
+  border:none;cursor:pointer;font-family:var(--sans)}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-ghost{font-size:13px;color:rgba(245,240,232,0.6);text-decoration:none;
+  display:flex;align-items:center;gap:6px;transition:color 0.2s;padding:14px 0}
+.btn-ghost:hover{color:var(--paper)}
+.tier-badge{display:inline-flex;align-items:center;gap:8px;
+  background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.12);
+  border-radius:20px;padding:6px 16px;margin-bottom:24px;
+  font-family:var(--cond);font-size:11px;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(245,240,232,0.5);}
+.tier-badge .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+section{padding:72px 72px}
+.section-label{font-family:var(--cond);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--pine3);margin-bottom:12px}
+h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,42px);font-weight:700;
+  line-height:1.1;color:var(--pine);margin-bottom:14px}
+h2 em{font-style:italic;font-weight:400;color:var(--gold)}
+.includes-section{background:var(--paper)}
+.includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+.include-card{background:var(--paper2);border:1px solid var(--paper3);
+  border-radius:12px;padding:22px;display:flex;gap:14px;align-items:flex-start;
+  transition:all 0.2s;}
+.include-card:hover{background:var(--light);border-color:var(--pine3);transform:translateY(-2px)}
+.ic-icon{width:34px;height:34px;border-radius:8px;background:var(--pine);
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.ic-title{font-size:13px;font-weight:600;color:var(--pine);margin-bottom:3px}
+.ic-desc{font-size:12px;color:var(--muted);line-height:1.55}
+.not-included-section{background:var(--paper2);padding:48px 72px}
+.ni-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.ni-tag{background:rgba(14,26,15,0.05);border:1px solid rgba(14,26,15,0.1);
+  border-radius:20px;padding:6px 14px;font-size:12px;color:var(--muted);
+  display:flex;align-items:center;gap:5px;}
+.ni-tag::before{content:'x';font-size:9px;color:rgba(184,50,50,0.55)}
+.upgrade-section{background:var(--pine);padding:64px 72px}
+.upgrade-section h2{color:var(--paper)}
+.upgrade-section h2 em{color:var(--gold2)}
+.upgrade-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+.upgrade-card{background:rgba(245,240,232,0.06);border:1px solid rgba(245,240,232,0.1);
+  border-radius:12px;padding:24px;transition:all 0.2s;text-decoration:none;display:block;}
+.upgrade-card:hover{background:rgba(245,240,232,0.1);transform:translateY(-2px)}
+.uc-label{font-family:var(--cond);font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold2);opacity:0.7;margin-bottom:7px}
+.uc-name{font-size:17px;font-weight:600;color:var(--paper);margin-bottom:5px}
+.uc-price{font-family:var(--serif);font-size:26px;font-weight:900;color:var(--gold2);margin-bottom:7px}
+.uc-desc{font-size:12px;color:rgba(245,240,232,0.6);line-height:1.6}
+.uc-arrow{color:var(--gold2);font-size:16px;margin-top:10px;display:block}
+/* ── FAQ ── */
+.faq-section{background:var(--paper);padding:72px 72px}
+.faq-list{max-width:700px;margin-top:32px}
+.faq-item{border-bottom:1px solid var(--paper3);overflow:hidden}
+.faq-q{
+  font-size:15px;font-weight:600;color:var(--pine);
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:20px 0;cursor:pointer;user-select:none;list-style:none;
+}
+.faq-icon{
+  font-size:22px;font-weight:300;color:var(--gold);
+  flex-shrink:0;line-height:1;transition:transform 0.25s ease;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{
+  font-size:13px;color:var(--muted);line-height:1.75;
+  max-height:0;overflow:hidden;
+  transition:max-height 0.35s ease,padding-bottom 0.35s ease;
+}
+.faq-item.open .faq-a{max-height:400px;padding-bottom:18px}
+/* ── CTA ── */
+.cta-section{background:var(--gold);padding:64px 72px;
+  display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.cta-section h2{color:var(--pine);margin-bottom:10px}
+.cta-section h2 em{color:var(--pine2)}
+.cta-lead{font-size:15px;color:var(--pine);opacity:0.8;line-height:1.7}
+.btn-dark{background:var(--pine);color:var(--paper);padding:15px 32px;
+  border-radius:var(--r);font-size:14px;font-weight:700;text-decoration:none;
+  white-space:nowrap;transition:background 0.2s;display:inline-block}
+.btn-dark:hover{background:var(--pine2)}
+/* ── FOOTER ── */
+footer{background:var(--ink);color:var(--paper);padding:48px 72px 24px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:28px}
+.footer-brand .nav-logo{font-size:20px;margin-bottom:10px;display:block}
+.footer-desc{font-size:12px;color:rgba(245,240,232,0.4);line-height:1.7;max-width:200px}
+.footer-col h4{font-family:var(--cond);font-size:10px;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(245,240,232,0.35);margin-bottom:14px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:9px;font-size:12px;color:rgba(245,240,232,0.4)}
+.footer-col a{font-size:12px;color:rgba(245,240,232,0.55);text-decoration:none;transition:color 0.2s}
+.footer-col a:hover{color:var(--paper)}
+.footer-bottom{border-top:1px solid rgba(245,240,232,0.07);padding-top:18px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-legal{font-size:11px;color:rgba(245,240,232,0.25);font-family:var(--cond)}
+.footer-legal-links{display:flex;gap:20px}
+.footer-legal-links a{font-size:10px;color:rgba(245,240,232,0.25);text-decoration:none;
+  font-family:var(--cond);transition:color 0.2s}
+.footer-legal-links a:hover{color:rgba(245,240,232,0.6)}
+@media(max-width:900px){
+  nav{padding:0 16px;gap:8px}
+  .nav-links{display:none}
+  .lang-buttons{gap:3px}
+  .lang-btn{padding:3px 7px;font-size:9px}
+  .page-hero{padding:88px 24px 48px}
+  section,.not-included-section,.upgrade-section,.faq-section,.cta-section{padding:48px 24px}
+  .includes-grid,.upgrade-cards{grid-template-columns:1fr}
+  .cta-section{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr;gap:24px}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Nord<span>Fiscal</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#servicios" id="nav-services">Services</a></li>
+    <li><a href="index.html#problemas" id="nav-problem">The Problem</a></li>
+    <li><a href="index.html#contacto" class="nav-cta" id="nav-cta">Free Analysis</a></li>
+  </ul>
+  <div class="lang-buttons">
+    <button class="lang-btn active" data-lang="en"><span>&#127468;&#127463;</span> EN</button>
+    <button class="lang-btn" data-lang="sv"><span>&#127480;&#127466;</span> SV</button>
+    <button class="lang-btn" data-lang="no"><span>&#127475;&#127476;</span> NO</button>
+    <button class="lang-btn" data-lang="da"><span>&#127465;&#127472;</span> DA</button>
+    <button class="lang-btn" data-lang="fi"><span>&#127467;&#127470;</span> FI</button>
+    <button class="lang-btn" data-lang="es"><span>&#127466;&#127480;</span> ES</button>
+  </div>
+</nav>
+<main>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="tier-badge">
+    <span class="dot" style="background:#c8962a"></span>
+    <span id="tier-eyebrow">NordFiscal · Pro</span>
+  </div>
+  <div class="hero-price-tag">
+    <span class="hero-price">299&#8364;</span>
+    <span class="hero-period">/YEAR</span>
+  </div>
+  <h1 id="tier-headline">Complex situation.<br><em>Completely covered.</em></h1>
+  <p class="hero-sub" id="tier-sub">For Scandinavians with pensions, investments, Modelo 720, or self-employed activity in Spain. Everything in Standard, plus Modelo 720 every year, active tax planning and 24-hour guaranteed response.</p>
+  <div class="hero-actions">
+    <a href="index.html#contacto" class="btn-primary" id="tier-cta">Get started — 299€/year</a>
+    <a href="index.html#servicios" class="btn-ghost">&#8592; All plans</a>
+  </div>
+</section>
+
+<!-- INCLUDES -->
+<section class="includes-section">
+  <div class="section-label">What's included</div>
+  <h2 id="inc-title">What is included</h2>
+  <p style="font-size:15px;color:var(--muted);max-width:560px;margin-bottom:0" id="inc-sub">Our most complete service. Nothing left to chance.</p>
+  <div class="includes-grid" id="includes-grid" data-icons="📊,⚖️,🏦,🎯,📞,⚡,🛡️,🔝"></div>
+</section>
+
+<!-- NOT INCLUDED -->
+<section class="not-included-section">
+  <div class="section-label">Not included</div>
+  <h2 id="ni-title" style="font-size:28px">Situations requiring a separate quote</h2>
+  <div class="ni-grid" id="ni-grid"></div>
+</section>
+
+<!-- UPGRADE -->
+<section class="upgrade-section">
+  <div class="section-label" style="color:rgba(245,240,232,0.4)">Other plans</div>
+  <h2 id="upgrade-title">Looking for a <em>simpler plan?</em></h2>
+  <p style="font-size:14px;color:rgba(245,240,232,0.6)" id="upgrade-sub">Standard or Essential may be a better fit for simpler situations.</p>
+  <div class="upgrade-cards">
+    <a href="standard.html" class="upgrade-card">
+      <div class="uc-label">Simpler option</div>
+      <div class="uc-name">Standard</div>
+      <div class="uc-price">199€<span style="font-size:13px;font-weight:400;opacity:0.5">/year</span></div>
+      <div class="uc-desc">For residents with cross-border income — IRPF + double taxation. No Modelo 720.</div>
+      <span class="uc-arrow">&#8594;</span>
+    </a>
+    <a href="essential.html" class="upgrade-card">
+      <div class="uc-label">Simpler option</div>
+      <div class="uc-name">Essential</div>
+      <div class="uc-price">119€<span style="font-size:13px;font-weight:400;opacity:0.5">/year</span></div>
+      <div class="uc-desc">Basic annual IRPF for simple situations. No foreign income treatment.</div>
+      <span class="uc-arrow">&#8594;</span>
+    </a></div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-label">FAQ</div>
+  <h2 id="faq-title">Common questions</h2>
+  <div class="faq-list" id="faq-list"></div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div>
+    <h2 id="cta-title">Your most complex year,<br><em>fully handled.</em></h2>
+    <p class="cta-lead" id="cta-sub">299€/year. Everything included. Guaranteed 24h response.</p>
+  </div>
+  <a href="index.html#contacto" class="btn-dark" id="cta-btn">Book free 20-min analysis →</a>
+</section>
+
+</main>
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">Nord<span>Fiscal</span></a>
+      <p class="footer-desc" id="ft-desc">Tax advisory for Scandinavians in Spain.</p>
+    </div>
+    <div class="footer-col">
+      <h4 id="ft-services">Services</h4>
+      <ul>
+        <li><a href="essential.html">Essential</a></li>
+        <li><a href="standard.html">Standard</a></li>
+        <li><a href="pro.html">Pro</a></li>
+        <li><a href="modelo720.html">Modelo 720</a></li>
+        <li><a href="ley-beckham.html">Ley Beckham</a></li>
+        <li><a href="double-taxation.html">Double Taxation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 id="ft-resources">Resources</h4>
+      <ul>
+        <li><a href="index.html#guia" id="ft-guide">Tax Guide 2025</a></li>
+        <li><a href="index.html#contacto" id="ft-analysis">Free Analysis</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 id="ft-contact">Contact</h4>
+      <ul>
+        <li><a href="mailto:info@nordfiscal.es">info@nordfiscal.es</a></li>
+        <li>Costa Blanca &middot; Costa del Sol</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-legal">&copy; 2026 NordFiscal &middot; info@nordfiscal.es</span>
+    <div class="footer-legal-links">
+      <a href="#" id="ft-privacy">Privacy Policy</a>
+      <a href="#">Cookies</a>
+      <a href="#">Aviso Legal</a>
+    </div>
+  </div>
+</footer>
+<script>
+const T = {
+  en: {
+    'tier-eyebrow':`NordFiscal · Pro`,
+    'tier-headline':`Complex situation.<br><em>Completely covered.</em>`,
+    'tier-sub':`For Scandinavians with pensions, investments, Modelo 720, or self-employed activity in Spain. Everything in Standard, plus Modelo 720 every year, active tax planning and 24-hour guaranteed response.`,
+    'tier-cta':`Get started — 299€/year`,
+    'inc-title':`What is included`,
+    'inc-sub':`Our most complete service. Nothing left to chance.`,
+    'ni-title':`Situations requiring a separate quote`,
+    'upgrade-title':`Looking for a <em>simpler plan?</em>`,
+    'upgrade-sub':`Standard or Essential may be a better fit for simpler situations.`,
+    'faq-title':`Common questions`,
+    'cta-title':`Your most complex year,<br><em>fully handled.</em>`,
+    'cta-sub':`299€/year. Everything included. Guaranteed 24h response.`,
+    'cta-btn':`Book free 20-min analysis →`,
+    includes:[[`Annual IRPF — full complexity`,`IRPF with foreign pensions, investment income, rental income, capital gains, multiple income sources and full treaty application.`],[`Double taxation — all income types`,`Complete treaty application across salary, pension (public and private), dividends, interest and capital gains.`],[`Modelo 720 — included every year`,`Annual Modelo 720 filing including cases with changes in asset values, new assets added or assets in multiple categories.`],[`Active tax planning`,`We proactively identify legal ways to reduce your tax burden — deductions, timing, applicable exemptions and optimisation of your tax position each year.`],[`Unlimited video consultations`,`Book video calls whenever you need. No limit. No extra charge.`],[`24-hour guaranteed response`,`Any query, any day of the year. Response guaranteed within 24 hours.`],[`Priority processing`,`Your declarations are always processed first. No waiting during peak season.`]],
+    ni:[`Company incorporation / SL formation`,`Inheritance and succession planning`,`Real estate purchase or sale legal support`,`Multi-country corporate structures`],
+    faqs:[[`Do I have to file a Spanish tax return (IRPF)?`,`If you are tax resident in Spain and earned more than 22,000 € from a single employer in 2025, or more than 15,876 € with two or more payers, you must file. Foreign pension income — even below 22,000 € — also triggers an obligation because no Spanish tax has been withheld. When in doubt, it is always worth checking with a specialist.`],[`Does having to file mean I have to pay?`,`Not necessarily. Many people who are required to file actually receive a refund of tax withheld during the year. Filing is not the same as paying — the result depends on your specific income, deductions and withholdings.`],[`I receive a pension from Sweden/Norway/Denmark/Finland. Do I need to file in Spain?`,`Yes, if you are tax resident in Spain. Foreign pension income has not been subject to Spanish withholding, so the filing threshold is lower: 15,876 €. However, the double taxation treaty between Spain and your home country may mean that part or all of it is only taxed there — we apply the correct treatment to avoid you paying twice.`],[`Why might two people with the same income get different results?`,`Because every tax return is different. Personal and family circumstances, number of payers, type of income, applicable deductions, withholdings made during the year — all of these affect the final result. It is almost impossible for two people to have an identical declaration.`],[`If my income is the same as last year, why is the result different?`,`Many factors change from year to year: tax rates, thresholds, available deductions, your personal situation, or how much was withheld. Even with the same gross income, the net tax result can differ.`],[`What is the deadline for the 2025 IRPF campaign?`,`The 2025 income tax campaign (for the 2024 tax year) opened on 8 April 2025 and closes on 30 June 2025. Missing the deadline means late-filing surcharges and potential penalties — we recommend filing well before the end of June.`],[`What documents do I need to file?`,`Typically: proof of income from all sources (payslips, pension certificates, rental income), your NIE, bank account details, and any certificates of tax paid abroad. If you have foreign assets, you may also need Modelo 720 data. We guide you through exactly what is needed for your situation.`],[`Can I deduct taxes I paid in my home country?`,`Yes. Under the double taxation treaty between Spain and your home country, taxes paid abroad can generally be credited against what you owe in Spain. The exact mechanism depends on the type of income and the specific treaty — we calculate this for you.`],[`What happens if I have not filed in previous years?`,`You can voluntarily regularise past years. Filing late without a prior request from AEAT incurs a surcharge (5–20% depending on how late). If AEAT contacts you first, penalties are higher. Voluntary regularisation is always the better option.`],[`What is Modelo 720 and is it separate from the income tax return?`,`Yes, it is entirely separate. Modelo 720 is an information declaration about foreign assets (bank accounts, investments, properties) worth more than 50,000 € per category. It does not generate a tax payment — it simply informs AEAT that these assets exist. It is filed between 1 January and 31 March each year.`]],
+  },
+  sv: {
+    'tier-eyebrow':`NordFiscal · Pro`,
+    'tier-headline':`Komplex situation.<br><em>Helt täckt.</em>`,
+    'tier-sub':`För skandinaver med pensioner, investeringar, Modelo 720 eller egenföretagande i Spanien. Allt i Standard plus Modelo 720 varje år, aktiv skatteplanering och garanterat 24h-svar.`,
+    'tier-cta':`Kom igång — 299€/år`,
+    'inc-title':`Vad ingår`,
+    'inc-sub':`Vår mest kompletta tjänst. Inget lämnas åt slumpen.`,
+    'ni-title':`Situationer som kräver separat offert`,
+    'upgrade-title':`Letar du efter en <em>enklare plan?</em>`,
+    'upgrade-sub':`Standard eller Essential kan passa bättre för enklare situationer.`,
+    'faq-title':`Vanliga frågor`,
+    'cta-title':`Ditt mest komplexa år,<br><em>helt hanterat.</em>`,
+    'cta-sub':`299€/år. Allt ingår. Garanterat 24h-svar.`,
+    'cta-btn':`Boka gratis 20-min analys →`,
+    includes:[[`Årlig IRPF — full komplexitet`,`IRPF med utländska pensioner, kapitalinkomster, hyresintäkter och tillämpning av skatteavtal.`],[`Dubbelbeskattning — alla inkomsttyper`,`Komplett tillämpning av skatteavtalet för lön, pension, utdelning, räntor och kapitalvinster.`],[`Modelo 720 — ingår varje år`,`Årlig Modelo 720 inkl. fall med värdeförändringar, nya tillgångar eller tillgångar i flera kategorier.`],[`Aktiv skatteplanering`,`Vi identifierar proaktivt lagliga sätt att minska din skattebörda varje år.`],[`Obegränsade videokonsultationer`,`Boka videosamtal när du behöver. Ingen gräns. Ingen extra kostnad.`],[`24h svar garanterat`,`Alla frågor, alla dagar. Svar garanterat inom 24 timmar.`],[`Prioriterad handläggning`,`Dina deklarationer hanteras alltid först.`]],
+    ni:[`Bolagsbildning / SL-konstitution`,`Arv och successionsplanering`,`Juridiskt stöd vid fastighetsköp/-försäljning`,`Komplexa företagsstrukturer i flera länder`],
+    faqs:[[`Måste jag göra en spansk inkomstdeklaration (IRPF)?`,`Om du är skattemässigt bosatt i Spanien och tjänade mer än 22.000 € från en enda arbetsgivare 2025, eller mer än 15.876 € med två eller fler utbetalare, är du skyldig att deklarera. Utländsk pensionsinkomst — även under 22.000 € — utlöser också deklarationsskyldighet eftersom ingen spansk källskatt har innehållits.`],[`Innebär deklarationsskyldighet att jag måste betala skatt?`,`Inte nödvändigtvis. Många som är skyldiga att deklarera får tillbaka skatt som innehållits under året. Att deklarera är inte detsamma som att betala — resultatet beror på dina specifika inkomster, avdrag och källskatter.`],[`Jag får pension från Sverige. Måste jag deklarera i Spanien?`,`Ja, om du är skattemässigt bosatt i Spanien. Utländsk pensionsinkomst har inte källbeskattats i Spanien, så gränsen är lägre: 15.876 €. Men dubbelbeskattningsavtalet mellan Spanien och Sverige kan innebära att pensionen bara beskattas i Sverige — vi tillämpar rätt behandling.`],[`Varför kan två personer med samma inkomst få olika resultat?`,`Därför att varje deklaration är unik. Personliga och familjeomständigheter, antal utbetalare, inkomsttyp och tillgängliga avdrag påverkar alla slutresultatet.`],[`Mina inkomster är samma som förra året — varför ser resultatet annorlunda ut?`,`Skattesatser, gränsvärden, tillgängliga avdrag och innehållna belopp förändras från år till år. Samma bruttoinkomst kan ge ett annat nettoresultat.`],[`När är sista datum för IRPF-deklarationen?`,`Kampanjen för inkomstår 2024 öppnade 8 april 2025 och stänger 30 juni 2025. Missar du deadline tillkommer tillägg och möjliga böter — vi rekommenderar att deklarera i god tid innan slutet av juni.`],[`Vilka dokument behöver jag?`,`Vanligtvis: inkomstbevis från alla källor (lönespecifikationer, pensionsintyg, hyresintäkter), ditt NIE, bankkontouppgifter och eventuella intyg om skatt betald utomlands. Vi vägleder dig om exakt vad som behövs.`],[`Kan jag dra av skatter jag betalat i Sverige?`,`Ja. Enligt dubbelbeskattningsavtalet kan skatter betalda i Sverige krediteras mot vad du är skyldig i Spanien. Den exakta mekanismen beror på inkomsttyp — vi beräknar detta åt dig.`],[`Vad händer om jag inte har deklarerat tidigare år?`,`Du kan frivilligt regularisera gamla år. Sen inlämning utan föregående krav från AEAT medför ett tillägg (5–20% beroende på hur sent). Frivillig regularisering är alltid det bättre alternativet.`],[`Vad är Modelo 720 och är det skilt från inkomstdeklarationen?`,`Ja, det är helt separat. Modelo 720 är en informationsdeklaration om utländska tillgångar (bankkonton, investeringar, fastigheter) värda mer än 50.000 € per kategori. Det genererar ingen skattebetalning — det informerar bara AEAT om att tillgångarna finns. Lämnas in 1 januari–31 mars varje år.`]],
+  },
+  no: {
+    'tier-eyebrow':`NordFiscal · Pro`,
+    'tier-headline':`Kompleks situasjon.<br><em>Fullstendig dekket.</em>`,
+    'tier-sub':`For skandinaver med pensjoner, investeringer, Modelo 720 eller selvstendig næringsvirksomhet i Spania. Alt i Standard pluss Modelo 720 hvert år, aktiv skatteplanlegging og 24t garantert svar.`,
+    'tier-cta':`Kom i gang — 299€/år`,
+    'inc-title':`Hva er inkludert`,
+    'inc-sub':`Vår mest komplette tjeneste. Ingenting overlates til tilfeldighetene.`,
+    'ni-title':`Situasjoner som krever separat tilbud`,
+    'upgrade-title':`Leter du etter en <em>enklere plan?</em>`,
+    'upgrade-sub':`Standard eller Essential kan passe bedre for enklere situasjoner.`,
+    'faq-title':`Vanlige spørsmål`,
+    'cta-title':`Ditt mest komplekse år,<br><em>fullt håndtert.</em>`,
+    'cta-sub':`299€/år. Alt inkludert. Garantert 24t-svar.`,
+    'cta-btn':`Book gratis 20-min analyse →`,
+    includes:[[`Årlig IRPF — full kompleksitet`,`IRPF med utenlandske pensjoner, kapitalinntekter, leieinntekter og full avtaleanvendelse.`],[`Dobbeltbeskatning — alle inntektstyper`,`Komplett avtaleanvendelse for lønn, pensjon, utbytte, renter og kapitalgevinster.`],[`Modelo 720 — inkludert hvert år`,`Årlig Modelo 720 inkl. tilfeller med verdiendringer, nye eiendeler eller eiendeler i flere kategorier.`],[`Aktiv skatteplanlegging`,`Vi identifiserer proaktivt lovlige måter å redusere skattebelastningen hvert år.`],[`Ubegrensede videokonsultasjoner`,`Book videosamtaler når du trenger det. Ingen grense. Ingen ekstra kostnad.`],[`24t svar garantert`,`Alle spørsmål, alle dager. Svar garantert innen 24 timer.`],[`Prioritert behandling`,`Dine deklarasjoner behandles alltid først.`]],
+    ni:[`Selskapsregistrering / SL-stiftelse`,`Arv og successionsplanlegging`,`Juridisk støtte ved eiendomskjøp/-salg`,`Komplekse selskapsstrukturer i flere land`],
+    faqs:[[`Må jeg levere norsk eller spansk selvangivelse?`,`Hvis du er skattemessig bosatt i Spania er det Spanias IRPF som gjelder for alle globale inntekter. Hvis du fortsatt er norsk skattemessig bosatt, leverer du i Norge. Vi fastslår korrekt status og sørger for at du kun leverer der du skal.`],[`Betyr leveringsplikt at jeg må betale skatt?`,`Ikke nødvendigvis. Mange med leveringsplikt mottar faktisk en tilbakebetaling. Resultatet avhenger av dine spesifikke inntekter, fradrag og forholdstrekk gjennom året.`],[`Jeg mottar AFP eller pensjon fra Norge. Må jeg deklarere i Spania?`,`Ja, hvis du er skattemessig bosatt i Spania. Utenlandsk pensjon har ikke blitt kildeskattet i Spania, så terskelen er lavere: 15.876 €. Dobbeltbeskatningsavtalen mellom Spania og Norge avgjør nøyaktig hvilke deler beskattes hvor.`],[`Hvorfor kan to med samme inntekt få ulikt resultat?`,`Fordi hver selvangivelse er unik. Personlige og familiemessige forhold, antall arbeidsgivere, inntektstype og tilgjengelige fradrag påvirker alle sluttresultatet.`],[`Inntekten min er den samme som i fjor — hvorfor er resultatet annerledes?`,`Skattesatser, terskler, tilgjengelige fradrag og tilbakeholdte beløp endres fra år til år. Samme bruttoinntekt kan gi et annet nettoresultat.`],[`Hva er fristen for IRPF-innlevering?`,`Kampanjen for skatteåret 2024 åpnet 8. april 2025 og stenger 30. juni 2025. Overskrider du fristen tilkommer tillegg og eventuelle bøter.`],[`Hvilke dokumenter trenger jeg?`,`Vanligvis: inntektsbevis fra alle kilder, ditt NIE, bankkontoopplysninger og eventuelle attester på skatt betalt i utlandet. Vi veileder deg om nøyaktig hva som kreves.`],[`Kan jeg trekke fra skatter jeg har betalt i Norge?`,`Ja. I henhold til dobbeltbeskatningsavtalen kan skatter betalt i Norge krediteres mot det du skylder i Spania.`],[`Hva skjer hvis jeg ikke har levert i tidligere år?`,`Du kan frivillig regularisere gamle år. Sen innlevering uten forutgående krav fra AEAT medfører et tillegg. Frivillig regularisering er alltid det beste alternativet.`],[`Hva er Modelo 720?`,`En informasjonsdeklarasjon om utenlandske eiendeler over 50.000 € per kategori. Genererer ingen skatteinnbetaling — informerer bare AEAT om at eiendelene eksisterer. Innleveres 1. januar–31. mars hvert år.`]],
+  },
+  da: {
+    'tier-eyebrow':`NordFiscal · Pro`,
+    'tier-headline':`Kompleks situation.<br><em>Fuldt dækket.</em>`,
+    'tier-sub':`For skandinaver med pensioner, investeringer, Modelo 720 eller selvstændig erhvervsaktivitet i Spanien. Alt i Standard plus Modelo 720 hvert år, aktiv skatteplanlægning og 24t garanteret svar.`,
+    'tier-cta':`Kom i gang — 299€/år`,
+    'inc-title':`Hvad er inkluderet`,
+    'inc-sub':`Vores mest komplette service. Intet overlades til tilfældighederne.`,
+    'ni-title':`Situationer der kræver separat tilbud`,
+    'upgrade-title':`Leder du efter en <em>enklere plan?</em>`,
+    'upgrade-sub':`Standard eller Essential kan passe bedre til enklere situationer.`,
+    'faq-title':`Hyppige spørgsmål`,
+    'cta-title':`Dit mest komplekse år,<br><em>fuldt håndteret.</em>`,
+    'cta-sub':`299€/år. Alt inkluderet. Garanteret 24t-svar.`,
+    'cta-btn':`Book gratis 20-min analyse →`,
+    includes:[[`Årlig IRPF — fuld kompleksitet`,`IRPF med udenlandske pensioner, kapitalindkomster, lejeindtægter og fuld aftaleanvendelse.`],[`Dobbeltbeskatning — alle indkomsttyper`,`Komplet aftaleanvendelse for løn, pension, udbytte, renter og kapitalgevinster.`],[`Modelo 720 — inkluderet hvert år`,`Årlig Modelo 720 inkl. tilfælde med værdiændringer, nye aktiver eller aktiver i flere kategorier.`],[`Aktiv skatteplanlægning`,`Vi identificerer proaktivt lovlige måder at reducere din skattebyrde hvert år.`],[`Ubegrænsede videokonsultationer`,`Book videoopkald når du har brug for det. Ingen grænse. Ingen ekstra omkostning.`],[`24t svar garanteret`,`Alle spørgsmål, alle dage. Svar garanteret inden for 24 timer.`],[`Prioriteret behandling`,`Dine deklarationer behandles altid først.`]],
+    ni:[`Selskabsstiftelse / SL-oprettelse`,`Arv og successionsplanlægning`,`Juridisk bistand ved ejendomskøb/-salg`,`Komplekse selskabsstrukturer i flere lande`],
+    faqs:[[`Er jeg forpligtet til at indgive en spansk selvangivelse (IRPF)?`,`Hvis du er skattemæssigt hjemmehørende i Spanien og tjente mere end 22.000 € fra én arbejdsgiver i 2025, eller mere end 15.876 € med to eller flere udbetalere, er du forpligtet til at indgive. Udenlandsk pensionsindkomst udløser også en indgivelsespligt, da der ikke er indeholdt spansk skat.`],[`Betyder indgivelsespligt, at jeg skal betale skat?`,`Ikke nødvendigvis. Mange med indgivelsespligt modtager faktisk en tilbagebetaling. Resultatet afhænger af dine specifikke indkomster, fradrag og forholdstræk i løbet af året.`],[`Jeg modtager folkepension fra Danmark. Skal jeg indgive selvangivelse i Spanien?`,`Ja, hvis du er skattemæssigt hjemmehørende i Spanien. Udenlandsk pensionsindkomst har ikke været underlagt spansk kildeskat, så grænsen er lavere: 15.876 €. Dobbeltbeskatningsaftalen mellem Spanien og Danmark afgør nøjagtigt, hvilke dele beskattes hvor.`],[`Hvorfor kan to personer med samme indkomst få forskellige resultater?`,`Fordi hver selvangivelse er unik. Personlige og familiemæssige forhold, antal udbetalere, indkomsttype og tilgængelige fradrag påvirker alle det endelige resultat.`],[`Min indkomst er den samme som sidste år — hvorfor er resultatet anderledes?`,`Skattesatser, grænser, tilgængelige fradrag og tilbageholdte beløb ændrer sig fra år til år.`],[`Hvad er fristen for IRPF-indgivelse?`,`Kampagnen for skatteåret 2024 åbnede 8. april 2025 og lukker 30. juni 2025.`],[`Hvilke dokumenter har jeg brug for?`,`Typisk: indkomstdokumentation fra alle kilder, dit NIE, bankkontooplysninger og eventuelle attester for skat betalt i udlandet.`],[`Kan jeg fratrække skatter, jeg har betalt i Danmark?`,`Ja. I henhold til dobbeltbeskatningsaftalen kan skatter betalt i Danmark krediteres mod det, du skylder i Spanien.`],[`Hvad sker der, hvis jeg ikke har indgivet i tidligere år?`,`Du kan frivilligt regularisere tidligere år. Sen indgivelse uden forudgående krav fra AEAT medfører et tillæg. Frivillig regularisering er altid det bedste alternativ.`],[`Hvad er Modelo 720?`,`En informationsdeklaration om udenlandske aktiver over 50.000 € pr. kategori. Genererer ingen skattebetaling — oplyser blot AEAT om at aktiverne eksisterer. Indgives 1. januar–31. marts hvert år.`]],
+  },
+  fi: {
+    'tier-eyebrow':`NordFiscal · Pro`,
+    'tier-headline':`Monimutkainen tilanne.<br><em>Täysin katettu.</em>`,
+    'tier-sub':`Skandinaaveille, joilla on eläkkeitä, sijoituksia, Modelo 720 tai itsenäistä ammatinharjoittamista Espanjassa. Kaikki Standard-paketissa plus Modelo 720 joka vuosi, aktiivinen verosuunnittelu ja taattu 24h vastaus.`,
+    'tier-cta':`Aloita — 299€/vuosi`,
+    'inc-title':`Mitä sisältyy`,
+    'inc-sub':`Kattavin palvelumme. Mitään ei jätetä sattuman varaan.`,
+    'ni-title':`Tilanteet, jotka vaativat erillisen tarjouksen`,
+    'upgrade-title':`Etsitkö <em>yksinkertaisempaa pakettia?</em>`,
+    'upgrade-sub':`Standard tai Essential voi sopia paremmin yksinkertaisempiin tilanteisiin.`,
+    'faq-title':`Usein kysytyt kysymykset`,
+    'cta-title':`Monimutkaisin vuotesi,<br><em>täysin hoidettu.</em>`,
+    'cta-sub':`299€/vuosi. Kaikki sisältyy. Taattu 24h vastaus.`,
+    'cta-btn':`Varaa ilmainen 20 min analyysi →`,
+    includes:[[`Vuotuinen IRPF — täysi monimutkaisuus`,`IRPF ulkomaisilla eläkkeillä, pääomatuloilla, vuokratuloilla ja täydellä sopimuksen soveltamisella.`],[`Kaksinkertainen verotus — kaikki tulotyypit`,`Täydellinen sopimuksen soveltaminen palkalle, eläkkeille, osingoille, koroille ja myyntivoitoille.`],[`Modelo 720 — sisältyy joka vuosi`,`Vuotuinen Modelo 720 sis. tapaukset, joissa on arvomuutoksia, uusia varoja tai useita kategorioita.`],[`Aktiivinen verosuunnittelu`,`Tunnistamme ennakoivasti laillisia tapoja vähentää verokuormaasi vuosittain.`],[`Rajoittamattomat videopuhelut`,`Varaa videopuheluja tarvittaessa. Ei rajaa. Ei lisäkustannuksia.`],[`24h vastaus taattu`,`Kaikki kysymykset, kaikki päivät. Vastaus taattu 24 tunnin sisällä.`],[`Prioriteettikäsittely`,`Ilmoituksesi käsitellään aina ensin.`]],
+    ni:[`Yrityksen perustaminen / SL:n muodostaminen`,`Perintö- ja sukupolvenvaihdossuunnittelu`,`Oikeudellinen tuki kiinteistön ostossa/myynnissä`,`Monimutkaiset yritysrakenteet useissa maissa`],
+    faqs:[[`Onko minun tehtävä Espanjan veroilmoitus (IRPF)?`,`Jos olet verotuksellisesti asukas Espanjassa ja ansaitsit yli 22 000 € yhdeltä työnantajalta vuonna 2025, tai yli 15 876 € kahdelta tai useammalta maksajalta, sinun on tehtävä ilmoitus. Ulkomaiset eläketulot laukaisevat myös ilmoitusvelvollisuuden, koska Espanjalaveron pidätystä ei ole tehty.`],[`Tarkoittaako ilmoitusvelvollisuus, että minun täytyy maksaa veroa?`,`Ei välttämättä. Monet, joilla on ilmoitusvelvollisuus, saavat itse asiassa palautuksen vuoden aikana pidätetyistä veroista. Tulos riippuu tuloistasi, vähennyksistäsi ja pidätyksistäsi.`],[`Saan eläkettä Suomesta. Täytyykö minun ilmoittaa se Espanjassa?`,`Kyllä, jos olet verotuksellisesti asukas Espanjassa. Ulkomaisesta eläkkeestä ei ole pidätetty espanjalaista veroa, joten raja on alempi: 15 876 €. Suomen ja Espanjan välinen verosopimus määrittää, missä maassa verotus tapahtuu.`],[`Miksi kahdella henkilöllä, joilla on sama tulo, voi olla eri tulos?`,`Koska jokainen veroilmoitus on erilainen. Henkilökohtaiset ja perheelliset olosuhteet, maksajien lukumäärä, tulotyyppi ja sovellettavat vähennykset vaikuttavat kaikki lopputulokseen.`],[`Tuloni ovat samat kuin viime vuonna — miksi tulos on erilainen?`,`Verokannat, raja-arvot, sovellettavat vähennykset ja pidätetyt summat muuttuvat vuodesta toiseen.`],[`Milloin on IRPF:n jättämisen määräaika?`,`Vuoden 2024 verovuoden kampanja avautui 8. huhtikuuta 2025 ja sulkeutuu 30. kesäkuuta 2025.`],[`Mitä asiakirjoja tarvitsen?`,`Yleensä: tulotodistukset kaikista lähteistä, NIE-numerosi, pankkitilitiedot ja todistukset ulkomailla maksetuista veroista.`],[`Voinko vähentää Suomessa maksamiani veroja?`,`Kyllä. Suomen ja Espanjan välisen verosopimuksen mukaan Suomessa maksetut verot voidaan hyvittää Espanjassa maksettavaa veroa vastaan.`],[`Mitä tapahtuu jos en ole ilmoittanut aiempina vuosina?`,`Voit vapaaehtoisesti säännöllistää aiemmat vuodet. Myöhäinen jättäminen ilman AEAT:n pyyntöä aiheuttaa lisämaksun. Vapaaehtoinen säännöllistäminen on aina parempi vaihtoehto.`],[`Mikä on Modelo 720?`,`Tietolomake ulkomaisista varoista yli 50 000 € per kategoria. Ei aiheuta veronmaksua — ilmoittaa vain AEAT:lle näiden varojen olemassaolosta. Jätetään 1. tammikuuta–31. maaliskuuta joka vuosi.`]],
+  },
+  es: {
+    'tier-eyebrow':`NordFiscal · Pro`,
+    'tier-headline':`Situación compleja.<br><em>Completamente cubierta.</em>`,
+    'tier-sub':`Para escandinavos con pensiones, inversiones, Modelo 720 o actividad como autónomo en España. Todo en Standard más Modelo 720 cada año, planificación fiscal activa y respuesta garantizada en 24 horas.`,
+    'tier-cta':`Empezar — 299€/año`,
+    'inc-title':`Qué incluye`,
+    'inc-sub':`Nuestro servicio más completo. Nada dejado al azar.`,
+    'ni-title':`Situaciones que requieren presupuesto aparte`,
+    'upgrade-title':`¿Buscas un <em>plan más sencillo?</em>`,
+    'upgrade-sub':`Standard o Essential pueden ser más adecuados para situaciones más simples.`,
+    'faq-title':`Preguntas frecuentes`,
+    'cta-title':`Tu año más complejo,<br><em>completamente gestionado.</em>`,
+    'cta-sub':`299€/año. Todo incluido. Respuesta garantizada en 24h.`,
+    'cta-btn':`Reservar análisis gratuito de 20 min →`,
+    includes:[[`IRPF anual — complejidad total`,`IRPF con pensiones extranjeras, rendimientos de capital, ingresos por alquiler, ganancias patrimoniales y aplicación completa de convenios.`],[`Doble imposición — todos los tipos de ingreso`,`Aplicación completa del convenio para salario, pensión (pública y privada), dividendos, intereses y ganancias patrimoniales.`],[`Modelo 720 — incluido cada año`,`Presentación anual del Modelo 720 incluyendo cambios de valor, nuevos activos o activos en varias categorías.`],[`Planificación fiscal activa`,`Identificamos proactivamente formas legales de reducir tu carga fiscal cada año.`],[`Videoconsultas ilimitadas`,`Reserva videollamadas cuando lo necesites. Sin límite. Sin coste adicional.`],[`Respuesta en 24 horas garantizada`,`Cualquier consulta, cualquier día. Respuesta garantizada en 24 horas.`],[`Tramitación prioritaria`,`Tus declaraciones siempre se procesan primero.`]],
+    ni:[`Constitución de sociedad / SL`,`Planificación hereditaria y sucesiones`,`Asesoramiento jurídico en compraventa de inmueble`,`Estructuras societarias complejas en varios países`],
+    faqs:[[`¿Estoy obligado a presentar la declaración de la renta?`,`Si eres residente fiscal en España y recibiste más de 22.000 € de un solo pagador en 2025, o más de 15.876 € con dos o más pagadores, tienes obligación de declarar. Las pensiones del extranjero — aunque sean inferiores a 22.000 € — también generan obligación, porque no han sufrido retención en España. Ante la duda, siempre conviene consultarlo.`],[`¿Tener obligación de declarar significa que tengo que pagar?`,`No necesariamente. En muchas declaraciones con obligación de presentación, el resultado es a devolver. Declarar no es lo mismo que pagar — el resultado depende de tus ingresos, deducciones y retenciones del año.`],[`Cobro una pensión de Suecia/Noruega/Dinamarca/Finlandia. ¿Tengo que declarar en España?`,`Sí, si eres residente fiscal en España. Los ingresos por pensión extranjera no han sufrido retención española, por lo que el umbral es menor: 15.876 €. Sin embargo, el convenio de doble imposición entre España y tu país de origen puede significar que parte o la totalidad solo tribute allí — aplicamos el tratamiento correcto para que no pagues dos veces.`],[`¿Por qué un conocido con los mismos ingresos obtiene un resultado diferente?`,`Porque cada declaración es única. Las circunstancias personales y familiares, el número de pagadores, el tipo de renta y las deducciones aplicables influyen todas en el resultado final.`],[`Cobro lo mismo que el año pasado, ¿por qué el resultado es diferente?`,`Los tipos impositivos, los límites, las deducciones disponibles y las retenciones practicadas varían de un año a otro. Con los mismos ingresos brutos, el resultado neto puede ser diferente.`],[`¿Cuándo es el plazo de la campaña de la renta 2025?`,`La campaña del IRPF 2025 (ejercicio 2024) abrió el 8 de abril de 2025 y cierra el 30 de junio de 2025. Presentar fuera de plazo conlleva recargos y posibles sanciones.`],[`¿Qué documentos necesito?`,`Normalmente: justificantes de ingresos de todas las fuentes (nóminas, certificados de pensión, ingresos por alquiler), tu NIE, datos bancarios y certificados de impuestos pagados en el extranjero. Te orientamos sobre exactamente qué necesitas.`],[`¿Puedo deducir los impuestos pagados en mi país de origen?`,`Sí. Según el convenio de doble imposición entre España y tu país, los impuestos pagados en el extranjero pueden deducirse de lo que debes en España. El mecanismo exacto depende del tipo de renta — lo calculamos por ti.`],[`¿Qué pasa si no he declarado en años anteriores?`,`Puedes regularizar voluntariamente. Presentar fuera de plazo sin requerimiento previo de la AEAT supone un recargo (del 5% al 20% según el retraso). Si la AEAT te contacta primero, las sanciones son mayores. La regularización voluntaria es siempre la mejor opción.`],[`¿Qué es el Modelo 720 y es independiente de la renta?`,`Sí, son completamente independientes. El Modelo 720 es una declaración informativa sobre activos en el extranjero (cuentas bancarias, inversiones, inmuebles) que superen los 50.000 € por categoría. No genera ningún pago de impuestos — solo informa a la AEAT de que esos activos existen. Se presenta entre el 1 de enero y el 31 de marzo de cada año.`]],
+  },
+};
+
+// ── UI text translations (nav, footer) ──────────────────────────────────────
+const UI = {
+  en:{
+    'nav-services':'Services','nav-problem':'The Problem','nav-cta':'Free Analysis',
+    'ft-desc':'Tax advisory for Scandinavians in Spain. Costa Blanca & Costa del Sol.',
+    'ft-services':'Services','ft-resources':'Resources','ft-contact':'Contact',
+    'ft-guide':'Tax Guide 2025','ft-analysis':'Free Analysis','ft-privacy':'Privacy Policy',
+  },
+  sv:{
+    'nav-services':'Tjänster','nav-problem':'Problemet','nav-cta':'Gratis analys',
+    'ft-desc':'Skatterådgivning för skandinaver i Spanien.',
+    'ft-services':'Tjänster','ft-resources':'Resurser','ft-contact':'Kontakt',
+    'ft-guide':'Skatteguide 2025','ft-analysis':'Gratis analys','ft-privacy':'Integritetspolicy',
+  },
+  no:{
+    'nav-services':'Tjenester','nav-problem':'Problemet','nav-cta':'Gratis analyse',
+    'ft-desc':'Skatterådgivning for skandinaver i Spania.',
+    'ft-services':'Tjenester','ft-resources':'Ressurser','ft-contact':'Kontakt',
+    'ft-guide':'Skatteguide 2025','ft-analysis':'Gratis analyse','ft-privacy':'Personvernpolicy',
+  },
+  da:{
+    'nav-services':'Tjenester','nav-problem':'Problemet','nav-cta':'Gratis analyse',
+    'ft-desc':'Skatterådgivning for skandinaver i Spanien.',
+    'ft-services':'Tjenester','ft-resources':'Ressourcer','ft-contact':'Kontakt',
+    'ft-guide':'Skatteguide 2025','ft-analysis':'Gratis analyse','ft-privacy':'Privatlivspolitik',
+  },
+  fi:{
+    'nav-services':'Palvelut','nav-problem':'Ongelma','nav-cta':'Ilmainen analyysi',
+    'ft-desc':'Veroneuvonta skandinaaveille Espanjassa.',
+    'ft-services':'Palvelut','ft-resources':'Resurssit','ft-contact':'Yhteystiedot',
+    'ft-guide':'Vero-opas 2025','ft-analysis':'Ilmainen analyysi','ft-privacy':'Tietosuojakäytäntö',
+  },
+  es:{
+    'nav-services':'Servicios','nav-problem':'El problema','nav-cta':'Análisis gratuito',
+    'ft-desc':'Asesoría fiscal para escandinavos en España.',
+    'ft-services':'Servicios','ft-resources':'Recursos','ft-contact':'Contacto',
+    'ft-guide':'Guía fiscal 2025','ft-analysis':'Análisis gratuito','ft-privacy':'Política de privacidad',
+  },
+};
+
+let currentLang = 'en';
+
+function detectLang() {
+  try {
+    const s = localStorage.getItem('nf_lang');
+    if (s && (T[s] || UI[s])) return s;
+  } catch(e) {}
+  const map = {sv:'sv',se:'sv',no:'no',nb:'no',nn:'no',da:'da',fi:'fi',es:'es',en:'en'};
+  for (const bl of (navigator.languages || [navigator.language || 'en'])) {
+    const code = bl.toLowerCase().split('-')[0];
+    if (map[code]) return map[code];
+  }
+  return 'en';
+}
+
+function setLang(lang) {
+  if (!T[lang]) return;
+  currentLang = lang;
+  document.documentElement.setAttribute('lang', lang);
+
+  // Update page content from T
+  const t = T[lang];
+  Object.keys(t).forEach(key => {
+    if (key === 'includes' || key === 'ni' || key === 'faqs') return;
+    const el = document.getElementById(key);
+    if (el) el.innerHTML = t[key];
+  });
+
+  // Update UI (nav/footer)
+  const ui = UI[lang] || UI['en'];
+  Object.keys(ui).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = ui[id];
+  });
+
+  // Render dynamic sections
+  renderIncludes(lang);
+  renderNI(lang);
+  renderFAQs(lang);
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+
+  try { localStorage.setItem('nf_lang', lang); } catch(e) {}
+}
+
+function renderIncludes(lang) {
+  const t = T[lang] || T['en'];
+  const items = t.includes || [];
+  const grid = document.getElementById('includes-grid');
+  if (!grid) return;
+  const icons = grid.getAttribute('data-icons').split(',');
+  grid.innerHTML = items.map((item, i) => `
+    <div class="include-card">
+      <div class="ic-icon">${icons[i] || '✓'}</div>
+      <div>
+        <div class="ic-title">${item[0]}</div>
+        <div class="ic-desc">${item[1]}</div>
+      </div>
+    </div>`).join('');
+}
+
+function renderNI(lang) {
+  const t = T[lang] || T['en'];
+  const grid = document.getElementById('ni-grid');
+  if (!grid || !t.ni) return;
+  grid.innerHTML = t.ni.map(item => `<span class="ni-tag">${item}</span>`).join('');
+}
+
+function renderFAQs(lang) {
+  const t = T[lang] || T['en'];
+  const list = document.getElementById('faq-list');
+  if (!list || !t.faqs) return;
+  list.innerHTML = t.faqs.map(([q, a]) => `
+    <div class="faq-item">
+      <div class="faq-q">${q}<span class="faq-icon">+</span></div>
+      <div class="faq-a">${a}</div>
+    </div>`).join('');
+
+  // Wire accordion AFTER rendering
+  list.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      // Close others
+      list.querySelectorAll('.faq-item.open').forEach(open => {
+        if (open !== item) open.classList.remove('open');
+      });
+      item.classList.toggle('open');
+    });
+  });
+}
+
+// Wire lang buttons
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    setLang(this.getAttribute('data-lang'));
+  });
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, {threshold: 0.08});
+
+document.querySelectorAll('.include-card,.upgrade-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.45s ease,transform 0.45s ease';
+  obs.observe(el);
+});
+
+// Init
+setLang(detectLang());
+
+</script>
+</body>
+</html>
